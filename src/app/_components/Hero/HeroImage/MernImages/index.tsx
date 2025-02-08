@@ -3,22 +3,22 @@ import Image from "next/image";
 function MernImages() {
   const images = [
     {
-      src: "/hero/mongo.webp",
+      src: "/hero/mern/mongo.webp",
       title: "M",
       subtitle: "ern",
     },
     {
-      src: "/hero/express.webp",
+      src: "/hero/mern/express.webp",
       title: "E",
       subtitle: "xpress",
     },
     {
-      src: "/hero/react.webp",
+      src: "/hero/mern/react.webp",
       title: "R",
       subtitle: "eact",
     },
     {
-      src: "/hero/node.webp",
+      src: "/hero/mern/node.webp",
       title: "N",
       subtitle: "ode",
     },
@@ -38,6 +38,7 @@ function MernImages() {
               fill
               alt={`${image.title}${image.title}`}
               className="object-contain"
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
             />
           </figure>
           <div className="flex items-baseline justify-center">

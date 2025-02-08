@@ -1,6 +1,6 @@
 "use client";
 
 function Footer() {
-  return <div className=" w-full h-screen bg-warning">Footer</div>;
+  return <div className=" w-full h-screen">Footer</div>;
 }
 export default Footer;

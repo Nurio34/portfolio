@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  scrollbar-width: none;
+}
+
+body {
+  overflow: hidden;
+  transition: color 0.9s;
+}
+
 .font-geist {
   font-family: var(--font-geist-sans);
 }

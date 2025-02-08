@@ -1,6 +1,6 @@
 "use client";
 
 function Projects() {
-  return <div className=" w-full h-screen bg-success">Projects</div>;
+  return <div className=" w-full h-screen">Projects</div>;
 }
 export default Projects;
