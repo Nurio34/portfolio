@@ -1,5 +1,4 @@
-import { AnimatePresence, motion } from "framer-motion";
-import Image from "next/image";
+import { AnimatePresence } from "framer-motion";
 import { useHeroContext } from "../HeroContext";
 import { useEffect, useRef } from "react";
 import LeftCurtain from "./LeftCurtain";

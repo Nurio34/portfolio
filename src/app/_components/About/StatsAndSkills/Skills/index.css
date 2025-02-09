@@ -1,0 +1,30 @@
+.About_Card_Container {
+  position: relative;
+  border-radius: 1rem;
+}
+
+.About_Card_Container::before {
+  content: "";
+  position: absolute;
+  border-radius: 1rem;
+  top: -0.2rem;
+  left: -0.2rem;
+  width: calc(100% + 0.4rem);
+  height: calc(100% + 0.4rem);
+  background: linear-gradient(90deg, red, blue, green, yellow);
+  background-size: 400% 400%;
+  z-index: -1;
+  animation: borderAnimation 12s calc(-4s * var(--index)) linear infinite;
+}
+
+@keyframes borderAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}

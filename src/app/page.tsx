@@ -1,14 +1,15 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import About from "./_components/About";
 import Contact from "./_components/Contact";
-import Footer from "./_components/Footer";
 import Hero from "./_components/Hero";
-import Projects from "./_components/Projects";
-import Scrollbar from "./_components/Scrollbar";
+import About from "./_components/About";
 import Skills from "./_components/Skills";
+import Projects from "./_components/Projects";
+import Footer from "./_components/Footer";
+import Scrollbar from "./_components/Scrollbar";
 import useScrollDirection from "./hooks/useScrollDirection";
+import ThemeHandler from "./_components/ThemeHandler";
 
 export default function Home() {
   const parts = [
@@ -45,6 +46,7 @@ export default function Home() {
 
   return (
     <main>
+      <ThemeHandler />
       <Scrollbar />
       <ul>
         {parts.map((part) => (

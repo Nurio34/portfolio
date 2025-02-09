@@ -42,8 +42,8 @@ function MernImages() {
             />
           </figure>
           <div className="flex items-baseline justify-center">
-            <p className=" font-bold text-xl md:text-3xl">{image.title}</p>
-            <p className=" text-xs">{image.subtitle}</p>
+            <p className=" font-bold text-2xl md:text-3xl">{image.title}</p>
+            <p className=" text-[8px] md:text-xs">{image.subtitle}</p>
           </div>
         </li>
       ))}

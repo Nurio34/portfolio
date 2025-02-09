@@ -10,6 +10,7 @@ function LeftCurtain() {
     "/hero/curtain/front/tailwind.webp",
     "/hero/curtain/front/daisy.webp",
     "/hero/curtain/front/redux.webp",
+    "/hero/curtain/front/tanstack.webp",
     "/hero/curtain/front/form.webp",
     "/hero/curtain/front/zod.webp",
     "/hero/curtain/front/framer.webp",

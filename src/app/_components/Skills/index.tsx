@@ -1,6 +1,5 @@
 "use client";
 
-function Skills() {
-  return <div className=" w-full h-screen">Skills</div>;
+export default function About() {
+  return <section className=" w-full h-screen">Skills</section>;
 }
-export default Skills;

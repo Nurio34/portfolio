@@ -13,13 +13,13 @@ function IntroduceMe() {
     "I love turning ideas into interactive digital experiences",
     "I enjoy solving complex problems with clean and efficient code",
     "I am constantly learning and improving my craft",
-    "I have experience working with Next.js, TailwindCSS, and AI integration",
+    "I have experience working with React, Next.js, Express, MongoDB, PostgreSQL, Prisma and AI integration",
     "I contribute to open-source projects and love collaborating with other developers",
     "I am a lifelong learner and a technology enthusiast",
-    "I develop modern and responsive user interfaces using Next.js, React, and TailwindCSS",
-    "I build powerful and secure back-end systems with Node.js, Express, MongoDB, and PostgreSQL",
-    "I work with Docker, Firebase, Vercel, and Git to streamline development and deployment",
-    "I integrate REST and GraphQL APIs to enhance application functionality",
+    "I develop modern and responsive user interfaces using React, TailwindCss, DaisyUI and Framer Motion",
+    "I build powerful and secure back-end systems with Node.js, Express, MongoDB, PostgreSQL, Prisma, Firebase and Clerk",
+    "I work with Git, Github, Vercel, Render and Bunny to streamline development and deployment",
+    "I create or integrate REST APIs to enhance application functionality",
   ];
 
   const { curtainsState } = useHeroContext();
@@ -36,7 +36,7 @@ function IntroduceMe() {
 
     const message = introducings[currentIndex];
     let i = isDeleting ? message.length : 0;
-    let speed = isDeleting ? 10 : 100;
+    const speed = isDeleting ? 10 : 100;
 
     function typeEffect() {
       if (!isDeleting) {
@@ -78,9 +78,9 @@ function IntroduceMe() {
 
   return (
     <div
-      className="grow flex flex-wrap justify-end py-[1vh] gap-x-[2.5px] font-serif tracking-tight text-lg font-semibold
-      bg-gradient-to-br from-secondary via-accent to-warning bg-clip-text text-transparent
-    "
+      className="grow flex flex-wrap justify-end py-[1vh] gap-x-[2.5px] font-serif tracking-normal md:text-lg font-semibold
+        bg-gradient-to-br from-secondary via-warning to-primary bg-clip-text text-transparent
+      "
     >
       {streamMessage.split("").map((char, index) => (
         <div key={index}>{char}</div>

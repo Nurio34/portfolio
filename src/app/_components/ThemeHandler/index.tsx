@@ -3,25 +3,33 @@
 import { useEffect, useState } from "react";
 
 function ThemeHandler() {
-  // Load theme from localStorage or default to "light"
-  const [theme, setTheme] = useState(
-    () => localStorage.getItem("theme") || "light"
-  );
+  const [theme, setTheme] = useState<string | null>(null);
 
-  // Set the theme on the <html> tag and update localStorage
+  // Load theme from localStorage on mount
   useEffect(() => {
-    document.documentElement.setAttribute("data-theme", theme);
-    localStorage.setItem("theme", theme);
+    const savedTheme = localStorage.getItem("theme") || "light";
+    setTheme(savedTheme);
+    document.documentElement.setAttribute("data-theme", savedTheme);
+  }, []);
+
+  // Update localStorage when theme changes
+  useEffect(() => {
+    if (theme) {
+      document.documentElement.setAttribute("data-theme", theme);
+      localStorage.setItem("theme", theme);
+    }
   }, [theme]);
 
-  // Function to toggle theme
+  // Toggle theme function
   const toggleTheme = () => {
     setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
   };
 
+  // Prevent rendering if theme is not loaded yet
+  if (!theme) return null;
+
   return (
-    <label className="swap swap-rotate absolute z-10 top-[1vh] md:top-[2vh] right-[2vw]">
-      {/* Hidden checkbox for theme toggling */}
+    <label className="swap swap-rotate fixed z-10 top-[1vh] md:top-[2vh] right-[2vw]">
       <input
         type="checkbox"
         className="theme-controller"

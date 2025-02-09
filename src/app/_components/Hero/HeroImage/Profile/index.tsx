@@ -1,4 +1,3 @@
-import Image from "next/image";
 import IntroduceMe from "./IntroduceMe";
 import Avatar from "./Avatar";
 import SocialLinks from "./SocialLinks";

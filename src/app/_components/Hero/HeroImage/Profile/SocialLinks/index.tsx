@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import { FaGithub } from "react-icons/fa";
 
 function SocialLinks() {
   const links = [
@@ -28,7 +27,7 @@ function SocialLinks() {
 
   return (
     <nav className=" w-4 h-full ">
-      <ul className="grid gap-y-[1vh]">
+      <ul className="grid gap-y-[2vh] md:gap-y-[1vh]">
         {links.map((link) => (
           <li
             key={link.name}
