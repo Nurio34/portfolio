@@ -20,3 +20,42 @@ body {
 .font-abyssinica {
   font-family: var(--font-abyssinica-sil);
 }
+
+.Contrast {
+  mix-blend-mode: difference;
+  color: white;
+}
+
+.Cutout_Section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  background: var(--bg1);
+  background-size: cover;
+  -webkit-mask-image: var(--mask1);
+  mask-image: var(--mask1);
+  mask-position: var(--x1) var(--y1);
+  mask-size: var(--size1);
+  mask-repeat: no-repeat;
+}
+.Cutout_Section::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  background: var(--bg2);
+  background-size: cover;
+  -webkit-mask-image: var(--mask2);
+  mask-image: var(--mask2);
+  mask-position: var(--x2) var(--y2);
+  mask-size: var(--size2);
+  mask-repeat: no-repeat;
+  transform: rotate(-5deg);
+}

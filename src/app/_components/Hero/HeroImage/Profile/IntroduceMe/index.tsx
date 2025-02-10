@@ -79,7 +79,7 @@ function IntroduceMe() {
   return (
     <div
       className="grow flex flex-wrap justify-end py-[1vh] gap-x-[2.5px] font-serif tracking-normal md:text-lg font-semibold
-        bg-gradient-to-br from-secondary via-warning to-primary bg-clip-text text-transparent
+        bg-gradient-to-br from-secondary via-warning to-primary bg-clip-text text-transparent 
       "
     >
       {streamMessage.split("").map((char, index) => (

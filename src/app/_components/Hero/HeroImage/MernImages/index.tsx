@@ -41,7 +41,7 @@ function MernImages() {
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
             />
           </figure>
-          <div className="flex items-baseline justify-center">
+          <div className="Contrast flex items-baseline justify-center">
             <p className=" font-bold text-2xl md:text-3xl">{image.title}</p>
             <p className=" text-[8px] md:text-xs">{image.subtitle}</p>
           </div>

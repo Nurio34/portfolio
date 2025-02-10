@@ -175,7 +175,12 @@ function Techs({ animations }: { animations: AnimationsType }) {
               {array.map((tech) => (
                 <li key={tech.name} className="flex gap-x-1 items-center ">
                   <figure className=" relative w-7 aspect-square">
-                    <Image src={tech.src} fill alt={tech.name} />
+                    <Image
+                      src={tech.src}
+                      fill
+                      alt={tech.name}
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    />
                   </figure>
                   <p className=" capitalize font-semibold hidden md:block">
                     {tech.name}

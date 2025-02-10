@@ -1,0 +1,7 @@
+.Projects_Perspective {
+  transform-style: preserve-3d;
+  perspective: 2000px;
+  perspective-origin: left;
+}
+.Projects_Card {
+}

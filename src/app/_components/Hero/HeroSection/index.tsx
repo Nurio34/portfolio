@@ -1,6 +1,6 @@
 function HeroSection() {
   return (
-    <div className="grid place-content-center px-[1vw] md:px-[4vw]">
+    <div className="Contrast grid place-content-center px-[1vw] md:px-[4vw]">
       <h1 className=" text-3xl font-semibold md:text-6xl md:font-extrabold font-geist pb-[1vh] md:pb-[4vh]">
         Crafting Scalable & Intelligent Web Solutions – FullStack Developer
       </h1>

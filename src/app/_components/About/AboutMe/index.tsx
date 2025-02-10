@@ -11,7 +11,7 @@ function AboutMe({
 }) {
   return (
     <motion.div
-      className=" px-[7vw] grid gap-y-1 md:gap-y-[2vh]"
+      className="px-[7vw] grid gap-y-1 md:gap-y-[2vh]"
       initial={{ opacity: 0, x: "-25%" }}
       whileInView={{
         opacity: 1,
@@ -28,7 +28,7 @@ function AboutMe({
       >
         About Me
       </h2>
-      <p className=" md:text-xl font-semibold">
+      <p className="Contrast md:text-xl font-semibold">
         I’m <span className="text-secondary font-bold">Nuri Salih Ersoy</span>,
         a self-taught{" "}
         <span className="text-accent underline underline-offset-2">
@@ -37,7 +37,7 @@ function AboutMe({
         web developer based in Istanbul, Turkey. I specialize in crafting
         modern, scalable, and AI-powered web applications.
       </p>
-      <p className=" text-sm md:text-lg">
+      <p className="Contrast text-sm md:text-lg">
         With expertise in{" "}
         <span className="text-info font-semibold">
           React, Next.js, Express.js

@@ -13,10 +13,10 @@ import ThemeHandler from "./_components/ThemeHandler";
 
 export default function Home() {
   const parts = [
+    { name: "projects", component: <Projects />, id: "Projects" },
     { name: "hero", component: <Hero />, id: "Hero" },
     { name: "about", component: <About />, id: "About" },
     { name: "skills", component: <Skills />, id: "Skills" },
-    { name: "projects", component: <Projects />, id: "Projects" },
     { name: "contact", component: <Contact />, id: "Contact" },
     { name: "footer", component: <Footer />, id: "Footer" },
   ];

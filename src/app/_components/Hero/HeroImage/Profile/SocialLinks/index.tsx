@@ -37,7 +37,12 @@ function SocialLinks() {
           >
             <Link href={link.href} target="_blank">
               <figure className=" relative w-8 aspect-square">
-                <Image src={link.src} fill alt={link.name} />
+                <Image
+                  src={link.src}
+                  fill
+                  alt={link.name}
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                />
               </figure>
             </Link>
           </li>
