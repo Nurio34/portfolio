@@ -2,11 +2,16 @@ import Card from "./Card";
 import { CiCircleChevLeft, CiCircleChevRight } from "react-icons/ci";
 import { useState } from "react";
 
+export type TechType = {
+  name: string;
+  image: string;
+};
+
 export type ProjectType = {
   title: string;
   description: string;
   image: string;
-  techs: string[];
+  techs: TechType[];
   link: string;
 };
 
@@ -17,18 +22,52 @@ function ProjectsStack() {
       description: "An AI-powered ",
       image: "/projects/smart_shop.webp",
       techs: [
-        "Next.js",
-        "Tailwind",
-        "DaisyUI",
-        "Framer-Motion",
-        "Redux-Toolkit",
-        "Next-Cloudinary",
-        "ApexCharts",
-        "PostgreSQL",
-        "Prisma",
-        "Cloudinary",
-        "AI",
+        {
+          name: "Next.js",
+          image: "/hero/curtain/front/react.webp",
+        },
+        {
+          name: "Tailwind",
+          image: "/hero/curtain/front/react.webp",
+        },
+        {
+          name: "DaisyUI",
+          image: "/hero/curtain/front/react.webp",
+        },
+        {
+          name: "Framer-Motion",
+          image: "/hero/curtain/front/react.webp",
+        },
+        {
+          name: "Redux-Toolkit",
+          image: "/hero/curtain/front/react.webp",
+        },
+        {
+          name: "Next-Cloudinary",
+          image: "/hero/curtain/front/react.webp",
+        },
+        {
+          name: "ApexCharts",
+          image: "/hero/curtain/front/react.webp",
+        },
+        {
+          name: "PostgreSQL",
+          image: "/hero/curtain/front/react.webp",
+        },
+        {
+          name: "Prisma",
+          image: "/hero/curtain/front/react.webp",
+        },
+        {
+          name: "Cloudinary",
+          image: "/hero/curtain/front/react.webp",
+        },
+        {
+          name: "AI",
+          image: "/hero/curtain/front/react.webp",
+        },
       ],
+
       link: "#",
     },
     {
@@ -37,16 +76,50 @@ function ProjectsStack() {
         "My personal portfolio showcasing my skills and projects.An AI-powered e-commerce platform with personalized recommendations.",
       image: "/projects/whatsup.webp",
       techs: [
-        "React",
-        "Tailwind",
-        "DaisyUI",
-        "Hot-Toast",
-        "React-Player",
-        "Framer-Motion",
-        "Cloudinary",
-        "Express",
-        "MongoDB",
-        "Mongoose",
+        {
+          name: "React",
+          image: "/hero/curtain/front/react.webp",
+        },
+        {
+          name: "Tailwind",
+          image: "/hero/curtain/front/tailwind.webp",
+        },
+        {
+          name: "DaisyUI",
+          image: "/hero/curtain/front/daisy.webp",
+        },
+        {
+          name: "Reducx-Toolkit",
+          image: "/hero/curtain/front/redux.webp",
+        },
+        {
+          name: "Hot-Toast",
+          image: "/hero/curtain/front/react-hot-toast.webp",
+        },
+        {
+          name: "Framer-Motion",
+          image: "/hero/curtain/front/framer.webp",
+        },
+        {
+          name: "Cloudinary",
+          image: "/hero/curtain/front/cloudinary.webp",
+        },
+        {
+          name: "Express",
+          image: "/hero/curtain/front/express.webp",
+        },
+        {
+          name: "MongoDB",
+          image: "/hero/curtain/front/mongo.webp",
+        },
+        {
+          name: "Firebase",
+          image: "/hero/curtain/front/firebase.webp",
+        },
+        {
+          name: "Socket-IO",
+          image: "/hero/curtain/front/socket.webp",
+        },
       ],
       link: "#",
     },
@@ -56,15 +129,50 @@ function ProjectsStack() {
         "A real-time AI-powered chatbot for instant customer support.An AI-powered e-commerce platform with personalized recommendations.",
       image: "/projects/lms_learn.webp",
       techs: [
-        "React",
-        "Tailwind",
-        "DaisyUI",
-        "Framer-Motion",
-        "Cloudinary",
-        "Express",
-        "MongoDB",
-        "Mongoose",
-        "Iyzipay",
+        {
+          name: "React",
+          image: "/hero/curtain/front/react.webp",
+        },
+        {
+          name: "Tailwind",
+          image: "/hero/curtain/front/tailwind.webp",
+        },
+        {
+          name: "DaisyUI",
+          image: "/hero/curtain/front/daisy.webp",
+        },
+        {
+          name: "Reducx-Toolkit",
+          image: "/hero/curtain/front/redux.webp",
+        },
+        {
+          name: "Hot-Toast",
+          image: "/hero/curtain/front/react-hot-toast.webp",
+        },
+        {
+          name: "Framer-Motion",
+          image: "/hero/curtain/front/framer.webp",
+        },
+        {
+          name: "Cloudinary",
+          image: "/hero/curtain/front/cloudinary.webp",
+        },
+        {
+          name: "Express",
+          image: "/hero/curtain/front/express.webp",
+        },
+        {
+          name: "MongoDB",
+          image: "/hero/curtain/front/mongo.webp",
+        },
+        {
+          name: "Firebase",
+          image: "/hero/curtain/front/firebase.webp",
+        },
+        {
+          name: "Socket-IO",
+          image: "/hero/curtain/front/socket.webp",
+        },
       ],
       link: "#",
     },

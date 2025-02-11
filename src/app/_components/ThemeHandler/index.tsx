@@ -1,18 +1,17 @@
 "use client";
 
+import { ThemeType, useGlobalContext } from "@/app/GlobalContext";
 import { useEffect, useState } from "react";
 
 function ThemeHandler() {
-  const [theme, setTheme] = useState<string | null>(null);
+  const { theme, setTheme } = useGlobalContext();
 
-  // Load theme from localStorage on mount
   useEffect(() => {
-    const savedTheme = localStorage.getItem("theme") || "light";
+    const savedTheme = (localStorage.getItem("theme") as ThemeType) || "dark";
     setTheme(savedTheme);
     document.documentElement.setAttribute("data-theme", savedTheme);
   }, []);
 
-  // Update localStorage when theme changes
   useEffect(() => {
     if (theme) {
       document.documentElement.setAttribute("data-theme", theme);
@@ -20,12 +19,10 @@ function ThemeHandler() {
     }
   }, [theme]);
 
-  // Toggle theme function
   const toggleTheme = () => {
     setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
   };
 
-  // Prevent rendering if theme is not loaded yet
   if (!theme) return null;
 
   return (

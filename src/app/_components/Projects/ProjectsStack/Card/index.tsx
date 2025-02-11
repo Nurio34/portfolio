@@ -3,6 +3,7 @@ import { ProjectType } from "..";
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Tech from "./Tech";
+import SourceButtons from "./SourceButtons";
 
 function Card({
   project,
@@ -23,29 +24,23 @@ function Card({
   const [y_Pos, setY_Pos] = useState<string[]>([]);
 
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const [titleStream, setTitleStream] = useState("");
   const [isTitleStreamComplated, setIsTitleStreamComplated] = useState(false);
   const [descriptionStream, setDescriptionStream] = useState("");
   const [isDescriptionStreamComplated, setIsDescriptionStreamComplated] =
     useState(false);
+  const [areTechsRevealed, setAreTechsRevealed] = useState(false);
 
+  //! *** handle stream texts ***
   useEffect(() => {
     if (isTitleStreamComplated && descriptionStream.trim() === "") {
-      let ind = 0;
-      intervalRef.current = setInterval(() => {
-        if (ind === project.description.length) {
-          if (intervalRef.current) {
-            clearInterval(intervalRef.current);
-            setIsDescriptionStreamComplated(true);
-          }
-        }
-
-        setDescriptionStream(project.description.slice(0, ind));
-        ind++;
-      }, 10);
+      streamDescription();
     }
   }, [isTitleStreamComplated]);
+  //! *************************
 
+  //! *** when clicked next or previous buttons, adjust positions ***
   useEffect(() => {
     if (currentIndex === index % total) {
       //! *** move to z_param
@@ -65,6 +60,37 @@ function Card({
       setY_Pos(["0", "-50%", "0"]);
     }
   }, [currentIndex]);
+  //! ***************
+
+  function streamTitle() {
+    let ind = 0;
+    intervalRef.current = setInterval(() => {
+      if (ind === project.title.length) {
+        if (intervalRef.current) {
+          clearInterval(intervalRef.current);
+          setIsTitleStreamComplated(true);
+        }
+      }
+
+      setTitleStream(project.title.slice(0, ind));
+      ind++;
+    }, 10);
+  }
+
+  function streamDescription() {
+    let ind = 0;
+    intervalRef.current = setInterval(() => {
+      if (ind === project.description.length) {
+        if (intervalRef.current) {
+          clearInterval(intervalRef.current);
+          setIsDescriptionStreamComplated(true);
+        }
+      }
+
+      setDescriptionStream(project.description.slice(0, ind));
+      ind++;
+    }, 10);
+  }
 
   return (
     <>
@@ -75,15 +101,15 @@ function Card({
             key={i}
             className={`absolute z-10 w-full h-full shadow-base-content rounded-lg overflow-hidden bg-base-100
               grid  grid-rows-[1fr,1fr]
-              ${i !== 0 ? "border-b-8 " : ""}
+              ${i !== 0 ? "border-b-8" : ""}
               ${i === 0 ? "shadow-md" : ""}
-         ${
-           currentIndex === index
-             ? "Projects_Card border-b-2 border-r-2 border-t-2 text-base-content"
-             : "shadow-sm text-base-300"
-         } ${i === totalCards - 1 - 1 ? "border-l-8 shadow-lg" : ""}
- 
-       `}
+              ${
+                currentIndex === index
+                  ? "Projects_Card border-b-2 border-r-2 border-t-2 text-base-content"
+                  : "shadow-sm opacity-30"
+              } ${i === totalCards - 1 - 1 ? "border-l-8 shadow-lg" : ""}
+    
+            `}
             style={
               {
                 "--z_Param": z_param - i,
@@ -102,18 +128,7 @@ function Card({
                 i === 0 &&
                 titleStream.trim() === ""
               ) {
-                let ind = 0;
-                intervalRef.current = setInterval(() => {
-                  if (ind === project.title.length) {
-                    if (intervalRef.current) {
-                      clearInterval(intervalRef.current);
-                      setIsTitleStreamComplated(true);
-                    }
-                  }
-
-                  setTitleStream(project.title.slice(0, ind));
-                  ind++;
-                }, 10);
+                streamTitle();
               }
             }}
           >
@@ -131,17 +146,23 @@ function Card({
                 <h2 className=" font-bold">{titleStream}</h2>
                 <p className=" text-sm font-semibold">{descriptionStream}</p>
                 {isDescriptionStreamComplated && (
-                  <ul className="flex flex-wrap gap-x-[1vw] gap-y-[1vh] text-xs py-[0.5vh] px-[0.5vw]">
+                  <motion.ul
+                    className={`flex flex-wrap gap-x-[1vw] gap-y-[1.5vh] text-xs py-[1vh] px-[0.5vw]`}
+                  >
                     {project.techs.map((tech, t_index) => (
-                      <Tech key={tech} tech={tech} index={t_index} />
+                      <Tech
+                        key={tech.name}
+                        tech={tech}
+                        index={t_index}
+                        totalTechs={project.techs.length}
+                        areTechsRevealed={areTechsRevealed}
+                        setAreTechsRevealed={setAreTechsRevealed}
+                        timeoutRef={timeoutRef}
+                      />
                     ))}
-                  </ul>
+                  </motion.ul>
                 )}
-                <div>
-                  <button type="button" className="btn btn-sm ">
-                    Button
-                  </button>
-                </div>
+                <SourceButtons areTechsRevealed={areTechsRevealed} />
               </div>
             )}
           </motion.li>

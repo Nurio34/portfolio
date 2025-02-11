@@ -10,6 +10,7 @@ import Footer from "./_components/Footer";
 import Scrollbar from "./_components/Scrollbar";
 import useScrollDirection from "./hooks/useScrollDirection";
 import ThemeHandler from "./_components/ThemeHandler";
+import { GlobalContextProvider } from "./GlobalContext";
 
 export default function Home() {
   const parts = [
@@ -45,16 +46,18 @@ export default function Home() {
   }, [currentComponent]);
 
   return (
-    <main>
-      <ThemeHandler />
-      <Scrollbar />
-      <ul>
-        {parts.map((part) => (
-          <li key={part.name} id={part.id}>
-            {part.component}
-          </li>
-        ))}
-      </ul>
-    </main>
+    <GlobalContextProvider>
+      <main>
+        <ThemeHandler />
+        <Scrollbar />
+        <ul>
+          {parts.map((part) => (
+            <li key={part.name} id={part.id}>
+              {part.component}
+            </li>
+          ))}
+        </ul>
+      </main>
+    </GlobalContextProvider>
   );
 }

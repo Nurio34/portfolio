@@ -33,7 +33,7 @@
   height: 100%;
   top: 0;
   left: -1px;
-  background-color: black;
+  background-color: var(--bc);
   transform: scaleY(0);
   transform-origin: bottom;
   animation: left-border 0.25s forwards;
@@ -51,7 +51,7 @@
   height: 1px;
   top: 0;
   left: 0;
-  background-color: black;
+  background-color: var(--bc);
   transform: scaleX(0);
   transform-origin: left;
   animation: top-border 0.25s 0.25s forwards;
@@ -69,7 +69,7 @@
   height: 100%;
   top: 0;
   right: 0;
-  background-color: black;
+  background-color: var(--bc);
   transform: scaleY(0);
   transform-origin: top;
   animation: right-border 0.25s 0.5s forwards;
@@ -87,7 +87,7 @@
   height: 1px;
   bottom: 0;
   left: 0;
-  background-color: black;
+  background-color: var(--bc);
   transform: scaleX(0);
   transform-origin: right;
   animation: bottom-border 0.25s 0.75s forwards;
@@ -116,8 +116,10 @@
   height: 100%;
   background-color: white;
   transform: rotate(-30deg) scale(4);
+  background-color: var(--bg);
   animation: reveal 1s 1s forwards;
 }
+
 @keyframes reveal {
   to {
     left: calc(400%);
