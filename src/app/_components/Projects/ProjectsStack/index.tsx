@@ -6,7 +6,7 @@ export type ProjectType = {
   title: string;
   description: string;
   image: string;
-  tech: string[];
+  techs: string[];
   link: string;
 };
 
@@ -14,25 +14,58 @@ function ProjectsStack() {
   const projects: ProjectType[] = [
     {
       title: "Smart Shop",
-      description:
-        "An AI-powered e-commerce platform with personalized recommendations.",
-      image: "/projects/smart-shop.webp",
-      tech: ["Next.js", "Tailwind", "DaisyUI", "AI"],
+      description: "An AI-powered ",
+      image: "/projects/smart_shop.webp",
+      techs: [
+        "Next.js",
+        "Tailwind",
+        "DaisyUI",
+        "Framer-Motion",
+        "Redux-Toolkit",
+        "Next-Cloudinary",
+        "ApexCharts",
+        "PostgreSQL",
+        "Prisma",
+        "Cloudinary",
+        "AI",
+      ],
       link: "#",
     },
     {
-      title: "Portfolio Website",
-      description: "My personal portfolio showcasing my skills and projects.",
-      image: "/projects/portfolio.webp",
-      tech: ["Next.js", "Tailwind", "Framer"],
+      title: "Whatsup",
+      description:
+        "My personal portfolio showcasing my skills and projects.An AI-powered e-commerce platform with personalized recommendations.",
+      image: "/projects/whatsup.webp",
+      techs: [
+        "React",
+        "Tailwind",
+        "DaisyUI",
+        "Hot-Toast",
+        "React-Player",
+        "Framer-Motion",
+        "Cloudinary",
+        "Express",
+        "MongoDB",
+        "Mongoose",
+      ],
       link: "#",
     },
     {
-      title: "Chat AI Assistant",
+      title: "LMS Learn",
       description:
-        "A real-time AI-powered chatbot for instant customer support.",
-      image: "/projects/chat-ai.webp",
-      tech: ["Next.js", "OpenAI", "Socket.io"],
+        "A real-time AI-powered chatbot for instant customer support.An AI-powered e-commerce platform with personalized recommendations.",
+      image: "/projects/lms_learn.webp",
+      techs: [
+        "React",
+        "Tailwind",
+        "DaisyUI",
+        "Framer-Motion",
+        "Cloudinary",
+        "Express",
+        "MongoDB",
+        "Mongoose",
+        "Iyzipay",
+      ],
       link: "#",
     },
   ];
@@ -40,10 +73,10 @@ function ProjectsStack() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   return (
-    <ul className="relative bg-red-500 Projects_Perspective">
+    <ul className="relative flex justify-center items-center">
       <button
         type="button"
-        className=" absolute top-1/2 -translate-y-1/2"
+        className="absolute left-0"
         onClick={() => {
           setCurrentIndex((prev) => {
             if (prev === 0) return projects.length - 1;
@@ -53,17 +86,20 @@ function ProjectsStack() {
       >
         <CiCircleChevLeft size={40} />
       </button>
-      {projects.map((project, index) => (
-        <Card
-          key={project.title}
-          project={project}
-          index={index}
-          currentIndex={currentIndex}
-        />
-      ))}
+      <div className="Projects_Perspective relative w-1/2 aspect-square">
+        {projects.map((project, index) => (
+          <Card
+            key={project.title}
+            project={project}
+            index={index}
+            total={projects.length}
+            currentIndex={currentIndex}
+          />
+        ))}
+      </div>
       <button
         type="button"
-        className=" absolute top-1/2 right-0 -translate-y-1/2"
+        className=" absolute right-0"
         onClick={() => {
           setCurrentIndex((prev) => (prev + 1) % projects.length);
         }}

@@ -1,7 +1,126 @@
 .Projects_Perspective {
   transform-style: preserve-3d;
-  perspective: 2000px;
-  perspective-origin: left;
+  perspective: 1000px;
+  perspective-origin: -10% 40%;
 }
+
 .Projects_Card {
+  cursor: pointer;
+  animation: rotating 1s ease-in-out infinite;
+  transform: translateY(5%) translateZ(calc(1px * var(--z_Param)))
+    rotateY(calc(1deg * var(--perspective)));
+}
+
+@keyframes rotatings {
+  50% {
+    transform: translateY(-5%) translateZ(calc(1px * var(--z_Param)))
+      rotateY(calc(1deg * var(--perspective)));
+  }
+}
+
+.Border_Container {
+  position: absolute;
+  z-index: -1;
+  top: -3px;
+  left: -3px;
+  width: calc(100% + 6px);
+  height: calc(100% + 6px);
+}
+
+.TechBadge_LeftBorder {
+  position: absolute;
+  width: 1px;
+  height: 100%;
+  top: 0;
+  left: -1px;
+  background-color: black;
+  transform: scaleY(0);
+  transform-origin: bottom;
+  animation: left-border 0.25s forwards;
+}
+
+@keyframes left-border {
+  to {
+    transform: scaleY(1);
+  }
+}
+
+.TechBadge_TopBorder {
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  top: 0;
+  left: 0;
+  background-color: black;
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: top-border 0.25s 0.25s forwards;
+}
+
+@keyframes top-border {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.TechBadge_RightBorder {
+  position: absolute;
+  width: 1px;
+  height: 100%;
+  top: 0;
+  right: 0;
+  background-color: black;
+  transform: scaleY(0);
+  transform-origin: top;
+  animation: right-border 0.25s 0.5s forwards;
+}
+
+@keyframes right-border {
+  to {
+    transform: scaleY(1);
+  }
+}
+
+.TechBadge_BottomBorder {
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  bottom: 0;
+  left: 0;
+  background-color: black;
+  transform: scaleX(0);
+  transform-origin: right;
+  animation: bottom-border 0.25s 0.75s forwards;
+}
+
+@keyframes bottom-border {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.Text_Hidder_Container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.Text_Hidder {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  transform: rotate(-30deg) scale(4);
+  animation: reveal 1s 1s forwards;
+}
+@keyframes reveal {
+  to {
+    left: calc(400%);
+    background-color: transparent;
+  }
 }

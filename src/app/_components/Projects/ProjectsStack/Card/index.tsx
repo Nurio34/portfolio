@@ -1,34 +1,153 @@
 import { motion } from "framer-motion";
 import { ProjectType } from "..";
+import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
+import Tech from "./Tech";
 
 function Card({
   project,
   index,
+  total,
   currentIndex,
 }: {
   project: ProjectType;
   index: number;
+  total: number;
   currentIndex: number;
 }) {
-  const patam = index - currentIndex;
+  const z_param = 200;
+  const perspective = 35;
+  const totalCards = currentIndex === index ? 35 : 1;
 
-  console.log(patam);
+  const [z_Pos, setZ_Pos] = useState<number[]>([]);
+  const [y_Pos, setY_Pos] = useState<string[]>([]);
+
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+  const [titleStream, setTitleStream] = useState("");
+  const [isTitleStreamComplated, setIsTitleStreamComplated] = useState(false);
+  const [descriptionStream, setDescriptionStream] = useState("");
+  const [isDescriptionStreamComplated, setIsDescriptionStreamComplated] =
+    useState(false);
+
+  useEffect(() => {
+    if (isTitleStreamComplated && descriptionStream.trim() === "") {
+      let ind = 0;
+      intervalRef.current = setInterval(() => {
+        if (ind === project.description.length) {
+          if (intervalRef.current) {
+            clearInterval(intervalRef.current);
+            setIsDescriptionStreamComplated(true);
+          }
+        }
+
+        setDescriptionStream(project.description.slice(0, ind));
+        ind++;
+      }, 10);
+    }
+  }, [isTitleStreamComplated]);
+
+  useEffect(() => {
+    if (currentIndex === index % total) {
+      //! *** move to z_param
+      setZ_Pos([-z_param, 0, z_param]);
+      setY_Pos(["0", "50%", "0"]);
+    }
+
+    if (currentIndex === (index + 1) % total) {
+      //! *** move to 0
+      setZ_Pos([z_param, z_param / 2, 0]);
+      setY_Pos(["0", "-49%", "0"]);
+    }
+
+    if (currentIndex === (index + 2) % total) {
+      //! *** move to -z_param
+      setZ_Pos([0, -z_param / 2, -z_param]);
+      setY_Pos(["0", "-50%", "0"]);
+    }
+  }, [currentIndex]);
 
   return (
-    <motion.li
-      className={`Projects_Card absolute top-1/2 left-1/2 w-1/2 aspect-square
-        ${
-          index === 0
-            ? "bg-primary"
-            : index === 1
-            ? "bg-secondary"
-            : "bg-accent"
-        }     
-    `}
-      style={{ translate: "-50% -50%", translateZ: patam * 100, rotateY: 60 }}
-    >
-      <h2>{project.title}</h2>
-    </motion.li>
+    <>
+      {Array(totalCards)
+        .fill("#")
+        .map((_, i) => (
+          <motion.li
+            key={i}
+            className={`absolute z-10 w-full h-full shadow-base-content rounded-lg overflow-hidden bg-base-100
+              grid  grid-rows-[1fr,1fr]
+              ${i !== 0 ? "border-b-8 " : ""}
+              ${i === 0 ? "shadow-md" : ""}
+         ${
+           currentIndex === index
+             ? "Projects_Card border-b-2 border-r-2 border-t-2 text-base-content"
+             : "shadow-sm text-base-300"
+         } ${i === totalCards - 1 - 1 ? "border-l-8 shadow-lg" : ""}
+ 
+       `}
+            style={
+              {
+                "--z_Param": z_param - i,
+                "--perspective": perspective,
+              } as React.CSSProperties
+            }
+            initial={{ rotateY: perspective }}
+            animate={{
+              z: currentIndex === index ? [-z_param, 0, z_param - i] : z_Pos,
+              y: y_Pos,
+              transition: { duration: 0.3 },
+            }}
+            onAnimationComplete={() => {
+              if (
+                currentIndex === index &&
+                i === 0 &&
+                titleStream.trim() === ""
+              ) {
+                let ind = 0;
+                intervalRef.current = setInterval(() => {
+                  if (ind === project.title.length) {
+                    if (intervalRef.current) {
+                      clearInterval(intervalRef.current);
+                      setIsTitleStreamComplated(true);
+                    }
+                  }
+
+                  setTitleStream(project.title.slice(0, ind));
+                  ind++;
+                }, 10);
+              }
+            }}
+          >
+            <figure className="relative ">
+              <Image
+                src={project.image}
+                fill
+                alt={project.title}
+                className="object-cover"
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              />
+            </figure>
+            {i === 0 && (
+              <div className={` py-[0.5vh] px-[1vw]`}>
+                <h2 className=" font-bold">{titleStream}</h2>
+                <p className=" text-sm font-semibold">{descriptionStream}</p>
+                {isDescriptionStreamComplated && (
+                  <ul className="flex flex-wrap gap-x-[1vw] gap-y-[1vh] text-xs py-[0.5vh] px-[0.5vw]">
+                    {project.techs.map((tech, t_index) => (
+                      <Tech key={tech} tech={tech} index={t_index} />
+                    ))}
+                  </ul>
+                )}
+                <div>
+                  <button type="button" className="btn btn-sm ">
+                    Button
+                  </button>
+                </div>
+              </div>
+            )}
+          </motion.li>
+        ))}
+    </>
   );
 }
+
 export default Card;
