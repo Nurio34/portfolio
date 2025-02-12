@@ -10,18 +10,21 @@ function Card({
   index,
   total,
   currentIndex,
+  isAnimationStarted,
 }: {
   project: ProjectType;
   index: number;
   total: number;
   currentIndex: number;
+  isAnimationStarted: boolean;
 }) {
   const z_param = 200;
-  const perspective = 35;
+  const [perspective, setPerspective] = useState(35);
   const totalCards = currentIndex === index ? 35 : 1;
 
   const [z_Pos, setZ_Pos] = useState<number[]>([]);
   const [y_Pos, setY_Pos] = useState<string[]>([]);
+  const [rotatingY, setRotatingY] = useState(5);
 
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -31,6 +34,7 @@ function Card({
   const [isDescriptionStreamComplated, setIsDescriptionStreamComplated] =
     useState(false);
   const [areTechsRevealed, setAreTechsRevealed] = useState(false);
+  const [isCardStackVisible, setIsCardStackVisible] = useState(true);
 
   //! *** handle stream texts ***
   useEffect(() => {
@@ -61,6 +65,16 @@ function Card({
     }
   }, [currentIndex]);
   //! ***************
+
+  useEffect(() => {
+    if (
+      currentIndex === index &&
+      titleStream.trim() === "" &&
+      isAnimationStarted
+    ) {
+      streamTitle();
+    }
+  }, [isAnimationStarted, currentIndex]);
 
   function streamTitle() {
     let ind = 0;
@@ -99,8 +113,9 @@ function Card({
         .map((_, i) => (
           <motion.li
             key={i}
-            className={`absolute z-10 w-full h-full shadow-base-content rounded-lg overflow-hidden bg-base-100
-              grid  grid-rows-[1fr,1fr]
+            tabIndex={i === 0 ? 0 : -1}
+            className={`absolute z-10 top-0 left-0 w-full h-full shadow-base-content rounded-lg overflow-hidden bg-base-100
+              grid grid-rows-[1fr,1fr]
               ${i !== 0 ? "border-b-8" : ""}
               ${i === 0 ? "shadow-md" : ""}
               ${
@@ -108,28 +123,38 @@ function Card({
                   ? "Projects_Card border-b-2 border-r-2 border-t-2 text-base-content"
                   : "shadow-sm opacity-30"
               } ${i === totalCards - 1 - 1 ? "border-l-8 shadow-lg" : ""}
-    
             `}
             style={
               {
                 "--z_Param": z_param - i,
                 "--perspective": perspective,
+                "--rotatingY": rotatingY,
               } as React.CSSProperties
             }
-            initial={{ rotateY: perspective }}
+            initial={{ rotateY: perspective, opacity: 0, top: 0 }}
             animate={{
+              opacity:
+                currentIndex !== index
+                  ? 0.5
+                  : !isCardStackVisible && i !== 0
+                  ? 0
+                  : 1,
               z: currentIndex === index ? [-z_param, 0, z_param - i] : z_Pos,
               y: y_Pos,
+              rotateY: perspective,
               transition: { duration: 0.3 },
             }}
-            onAnimationComplete={() => {
-              if (
-                currentIndex === index &&
-                i === 0 &&
-                titleStream.trim() === ""
-              ) {
-                streamTitle();
+            onHoverStart={() => {
+              if (currentIndex === index) {
+                setRotatingY(0);
+                setIsCardStackVisible(false);
+                setPerspective(0);
               }
+            }}
+            onMouseLeave={() => {
+              setRotatingY(5);
+              setIsCardStackVisible(true);
+              setPerspective(35);
             }}
           >
             <figure className="relative ">
@@ -162,7 +187,10 @@ function Card({
                     ))}
                   </motion.ul>
                 )}
-                <SourceButtons areTechsRevealed={areTechsRevealed} />
+                <SourceButtons
+                  areTechsRevealed={areTechsRevealed}
+                  project={project}
+                />
               </div>
             )}
           </motion.li>

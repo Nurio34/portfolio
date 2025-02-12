@@ -1,21 +1,34 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { ProjectType } from "../..";
+import Link from "next/link";
 
-function SourceButtons({ areTechsRevealed }: { areTechsRevealed: boolean }) {
+function SourceButtons({
+  areTechsRevealed,
+  project,
+}: {
+  areTechsRevealed: boolean;
+  project: ProjectType;
+}) {
   const [areButtonsRevealed, setAreButtonsRevealed] = useState(false);
 
   return (
-    <div className="flex justify-between  py-[1vh] px-[1vw]">
-      <motion.button
-        type="button"
-        className="relative overflow-hidden  btn btn-sm btn-primary"
+    <div className="flex justify-between gap-x-[2vw]  py-[1vh] px-[1vw]">
+      <motion.div
+        className="grow"
         initial={{ opacity: 0, y: "25%" }}
         animate={{
           opacity: areTechsRevealed ? 1 : undefined,
           y: areTechsRevealed ? "0%" : undefined,
         }}
       >
-        Button
+        <Link
+          href={project.github}
+          target="_blank"
+          className=" w-full relative overflow-hidden  btn btn-sm btn-primary"
+        >
+          Github
+        </Link>
         <motion.div
           className=" absolute w-full h-full bg-white"
           initial={{ rotate: -45, translate: "-100%" }}
@@ -26,10 +39,9 @@ function SourceButtons({ areTechsRevealed }: { areTechsRevealed: boolean }) {
             transition: { duration: 1 },
           }}
         ></motion.div>
-      </motion.button>
-      <motion.button
-        type="button"
-        className="relative overflow-hidden btn btn-sm btn-secondary"
+      </motion.div>
+      <motion.div
+        className="grow"
         initial={{ opacity: 0, y: "25%" }}
         animate={{
           opacity: areTechsRevealed ? 1 : undefined,
@@ -38,7 +50,13 @@ function SourceButtons({ areTechsRevealed }: { areTechsRevealed: boolean }) {
         }}
         onAnimationComplete={() => setAreButtonsRevealed(true)}
       >
-        Button
+        <Link
+          href={project.liveLink}
+          target="_blank"
+          className="w-full relative overflow-hidden btn btn-sm btn-secondary"
+        >
+          Live App
+        </Link>
         <motion.div
           className=" absolute w-full h-full bg-white"
           initial={{ rotate: -45, translate: "-100%" }}
@@ -49,7 +67,7 @@ function SourceButtons({ areTechsRevealed }: { areTechsRevealed: boolean }) {
             transition: { duration: 1 },
           }}
         ></motion.div>
-      </motion.button>
+      </motion.div>
     </div>
   );
 }

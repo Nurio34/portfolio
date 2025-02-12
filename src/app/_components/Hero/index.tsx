@@ -9,7 +9,7 @@ function Hero() {
   return (
     <HeroProvider>
       <section
-        className="Cutout_Section relative w-full h-screen grid grid-rows-2 md:grid-rows-1 md:grid-cols-2 overflow-x-hidden"
+        className="Cutout_Section relative w-full h-screen grid grid-rows-2 md:grid-rows-1 md:grid-cols-2 overflow-hidden"
         style={
           {
             "--x1": "10%",

@@ -1,6 +1,7 @@
 import Card from "./Card";
 import { CiCircleChevLeft, CiCircleChevRight } from "react-icons/ci";
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 export type TechType = {
   name: string;
@@ -12,68 +13,79 @@ export type ProjectType = {
   description: string;
   image: string;
   techs: TechType[];
-  link: string;
+  github: string;
+  liveLink: string;
 };
 
-function ProjectsStack() {
+export type PerspectiveOriginType = {
+  x: number;
+  y: number;
+};
+
+function ProjectsStack({
+  isAnimationStarted,
+}: {
+  isAnimationStarted: boolean;
+}) {
   const projects: ProjectType[] = [
     {
       title: "Smart Shop",
-      description: "An AI-powered ",
+      description:
+        "An AI-powered e-commerce PWA with real-time updates, role-based access, and personalized recommendations for a seamless shopping experience.",
       image: "/projects/smart_shop.webp",
       techs: [
         {
           name: "Next.js",
-          image: "/hero/curtain/front/react.webp",
+          image: "/hero/curtain/front/next.webp",
         },
         {
           name: "Tailwind",
-          image: "/hero/curtain/front/react.webp",
+          image: "/hero/curtain/front/tailwind.webp",
         },
         {
           name: "DaisyUI",
-          image: "/hero/curtain/front/react.webp",
+          image: "/hero/curtain/front/daisy.webp",
         },
         {
           name: "Framer-Motion",
-          image: "/hero/curtain/front/react.webp",
+          image: "/hero/curtain/front/framer.webp",
         },
         {
           name: "Redux-Toolkit",
-          image: "/hero/curtain/front/react.webp",
+          image: "/hero/curtain/front/redux.webp",
         },
         {
           name: "Next-Cloudinary",
-          image: "/hero/curtain/front/react.webp",
+          image: "/hero/curtain/front/next-cloudinary.webp",
         },
         {
           name: "ApexCharts",
-          image: "/hero/curtain/front/react.webp",
+          image: "/hero/curtain/front/apexcharts.webp",
         },
         {
           name: "PostgreSQL",
-          image: "/hero/curtain/front/react.webp",
+          image: "/hero/curtain/back/postgre.webp",
         },
         {
           name: "Prisma",
-          image: "/hero/curtain/front/react.webp",
+          image: "/hero/curtain/back/prisma.webp",
         },
         {
           name: "Cloudinary",
-          image: "/hero/curtain/front/react.webp",
+          image: "/hero/curtain/back/cloudinary.webp",
         },
         {
-          name: "AI",
-          image: "/hero/curtain/front/react.webp",
+          name: "Gemini",
+          image: "/hero/curtain/back/gemini.webp",
         },
       ],
-
-      link: "#",
+      github: "https://github.com/Nurio34/smart-shop",
+      liveLink: "https://smartshop-ashen.vercel.app/",
     },
     {
       title: "Whatsup",
       description:
-        "My personal portfolio showcasing my skills and projects.An AI-powered e-commerce platform with personalized recommendations.",
+        "Whatsup is a real-time messaging app with end-to-end encryption for secure communication. It supports text, images and notifications for a smooth messaging experience.",
       image: "/projects/whatsup.webp",
       techs: [
         {
@@ -89,7 +101,7 @@ function ProjectsStack() {
           image: "/hero/curtain/front/daisy.webp",
         },
         {
-          name: "Reducx-Toolkit",
+          name: "Redux-Toolkit",
           image: "/hero/curtain/front/redux.webp",
         },
         {
@@ -101,32 +113,34 @@ function ProjectsStack() {
           image: "/hero/curtain/front/framer.webp",
         },
         {
-          name: "Cloudinary",
-          image: "/hero/curtain/front/cloudinary.webp",
-        },
-        {
           name: "Express",
-          image: "/hero/curtain/front/express.webp",
+          image: "/hero/curtain/back/express.webp",
         },
         {
           name: "MongoDB",
-          image: "/hero/curtain/front/mongo.webp",
+          image: "/hero/curtain/back/mongo.webp",
         },
         {
+          name: "Cloudinary",
+          image: "/hero/curtain/back/cloudinary.webp",
+        },
+
+        {
           name: "Firebase",
-          image: "/hero/curtain/front/firebase.webp",
+          image: "/hero/curtain/back/firebase.webp",
         },
         {
           name: "Socket-IO",
-          image: "/hero/curtain/front/socket.webp",
+          image: "/hero/curtain/back/socket.webp",
         },
       ],
-      link: "#",
+      github: "https://github.com/Nurio34/whatsup",
+      liveLink: "https://whatsup-lime-rho.vercel.app/",
     },
     {
       title: "LMS Learn",
       description:
-        "A real-time AI-powered chatbot for instant customer support.An AI-powered e-commerce platform with personalized recommendations.",
+        "An online learning platform for instructors to create courses and students to enroll, featuring progress tracking and user authentication.",
       image: "/projects/lms_learn.webp",
       techs: [
         {
@@ -142,7 +156,7 @@ function ProjectsStack() {
           image: "/hero/curtain/front/daisy.webp",
         },
         {
-          name: "Reducx-Toolkit",
+          name: "Redux-Toolkit",
           image: "/hero/curtain/front/redux.webp",
         },
         {
@@ -154,37 +168,31 @@ function ProjectsStack() {
           image: "/hero/curtain/front/framer.webp",
         },
         {
-          name: "Cloudinary",
-          image: "/hero/curtain/front/cloudinary.webp",
+          name: "Express",
+          image: "/hero/curtain/back/express.webp",
         },
         {
-          name: "Express",
-          image: "/hero/curtain/front/express.webp",
+          name: "Cloudinary",
+          image: "/hero/curtain/back/cloudinary.webp",
         },
+
         {
           name: "MongoDB",
-          image: "/hero/curtain/front/mongo.webp",
-        },
-        {
-          name: "Firebase",
-          image: "/hero/curtain/front/firebase.webp",
-        },
-        {
-          name: "Socket-IO",
-          image: "/hero/curtain/front/socket.webp",
+          image: "/hero/curtain/back/mongo.webp",
         },
       ],
-      link: "#",
+      github: "https://github.com/Nurio34/lms-learn",
+      liveLink: "https://lms-learn.vercel.app/",
     },
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
 
   return (
-    <ul className="relative flex justify-center items-center">
+    <motion.ul className=" flex justify-center items-center">
       <button
         type="button"
-        className="absolute left-0"
+        className="Contrast absolute left-[20%]"
         onClick={() => {
           setCurrentIndex((prev) => {
             if (prev === 0) return projects.length - 1;
@@ -192,9 +200,9 @@ function ProjectsStack() {
           });
         }}
       >
-        <CiCircleChevLeft size={40} />
+        <CiCircleChevLeft size={80} />
       </button>
-      <div className="Projects_Perspective relative w-1/2 aspect-square">
+      <div className="Projects_Perspective z-10 w-1/4 -translate-x-1/4 aspect-square">
         {projects.map((project, index) => (
           <Card
             key={project.title}
@@ -202,19 +210,20 @@ function ProjectsStack() {
             index={index}
             total={projects.length}
             currentIndex={currentIndex}
+            isAnimationStarted={isAnimationStarted}
           />
         ))}
       </div>
       <button
         type="button"
-        className=" absolute right-0"
+        className="Contrast absolute right-[20%]"
         onClick={() => {
           setCurrentIndex((prev) => (prev + 1) % projects.length);
         }}
       >
-        <CiCircleChevRight size={40} />
+        <CiCircleChevRight size={80} />
       </button>
-    </ul>
+    </motion.ul>
   );
 }
 export default ProjectsStack;

@@ -1,7 +1,7 @@
 "use client";
 
 import { ThemeType, useGlobalContext } from "@/app/GlobalContext";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 function ThemeHandler() {
   const { theme, setTheme } = useGlobalContext();

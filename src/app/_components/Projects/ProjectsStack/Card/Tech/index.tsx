@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Dispatch, RefObject, SetStateAction, useRef, useState } from "react";
+import { Dispatch, RefObject, SetStateAction } from "react";
 import { TechType } from "../..";
 import Image from "next/image";
 import { useGlobalContext } from "@/app/GlobalContext";
@@ -46,8 +46,13 @@ function Tech({
       }}
     >
       <div className="flex items-center gap-x-[0.5vw]">
-        <figure className="relative w-3 aspect-square">
-          <Image src={tech.image} fill alt={tech.name} />
+        <figure className="relative w-5 aspect-square">
+          <Image
+            src={tech.image}
+            fill
+            alt={tech.name}
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          />
         </figure>
         <p>{tech.name}</p>
       </div>

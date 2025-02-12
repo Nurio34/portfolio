@@ -263,6 +263,61 @@ export default function Skill() {
         description:
           "OpenAI is my go-to for incorporating cutting-edge AI functionalities. I use its API to enable features like text generation, summarization, and conversational AI, making my applications smarter and more interactive.",
       },
+      {
+        name: "nodemailer",
+        src: "/hero/curtain/back/nodemailer.webp",
+        description:
+          "Nodemailer is my go-to library for sending emails in Node.js applications. I use it to automate email notifications, such as welcome emails, password resets, and transactional messages, ensuring reliable and efficient communication with users.",
+      },
+      {
+        name: "jsonwebtoken",
+        src: "/hero/curtain/back/jwt.webp",
+        description:
+          "JSON Web Token (JWT) is my library for implementing authentication and authorization. I use it to generate and verify tokens, enabling secure user sessions and role-based access control in my applications.",
+      },
+      {
+        name: "express-rate-limit",
+        src: "/hero/curtain/back/rate-limiter.webp",
+        description:
+          "Express Rate Limit is my middleware for limiting repeated requests to APIs. I use it to prevent abuse, such as brute-force attacks or excessive API calls, ensuring fair usage and protecting server resources.",
+      },
+      {
+        name: "validator.js",
+        src: "/hero/curtain/front/npm.webp",
+        description:
+          "Validator.js is my library for string validation and sanitization. I use it to ensure data integrity by validating user inputs, such as emails, passwords, and URLs, reducing the risk of invalid or malicious data.",
+      },
+      {
+        name: "cors",
+        src: "/hero/curtain/front/npm.webp",
+        description:
+          "CORS is my middleware for enabling cross-origin resource sharing in Express.js applications. I use it to allow secure communication between the frontend and backend when they are hosted on different domains.",
+      },
+      {
+        name: "helmet",
+        src: "/hero/curtain/front/npm.webp",
+        description:
+          "Helmet is my security middleware for Express.js. I use it to set HTTP headers that protect against common vulnerabilities like XSS, content sniffing, and clickjacking, ensuring my applications are secure by default.",
+      },
+
+      {
+        name: "cookie-parser",
+        src: "/hero/curtain/front/npm.webp",
+        description:
+          "Cookie Parser is my middleware for handling cookies in Express.js. I use it to parse and manage cookies, enabling features like authentication sessions and user preferences.",
+      },
+      {
+        name: "multer",
+        src: "/hero/curtain/front/npm.webp",
+        description:
+          "Multer is my middleware for handling file uploads in Express.js. I use it to process multipart/form-data, enabling users to upload files like images, documents, and videos securely and efficiently.",
+      },
+      {
+        name: "bcryptjs",
+        src: "/hero/curtain/front/npm.webp",
+        description:
+          "Bcrypt.js is my library for hashing passwords. I use it to securely store user credentials by hashing passwords with salt, protecting sensitive data from breaches and unauthorized access.",
+      },
     ],
     tools: [
       {
@@ -338,7 +393,9 @@ export default function Skill() {
 
   return (
     <section
-      className="Cutout_Section relative w-full h-screen py-[2vh] px-[8vw] space-y-[1vh] overflow-hidden"
+      className="Cutout_Section relative w-full h-screen py-[2vh] px-[8vw] space-y-[1vh] overflow-hidden
+        grid grid-rows-[auto,auto,1fr]
+      "
       style={
         {
           "--x1": "30%",

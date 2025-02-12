@@ -7,13 +7,15 @@
 .Projects_Card {
   cursor: pointer;
   animation: rotating 1s ease-in-out infinite;
-  transform: translateY(5%) translateZ(calc(1px * var(--z_Param)))
+  transform: translateY(calc(1% * var(--rotatingY)))
+    translateZ(calc(1px * var(--z_Param)))
     rotateY(calc(1deg * var(--perspective)));
 }
 
-@keyframes rotatings {
+@keyframes rotating {
   50% {
-    transform: translateY(-5%) translateZ(calc(1px * var(--z_Param)))
+    transform: translateY(calc(-1% * var(--rotatingY)))
+      translateZ(calc(1px * var(--z_Param)))
       rotateY(calc(1deg * var(--perspective)));
   }
 }

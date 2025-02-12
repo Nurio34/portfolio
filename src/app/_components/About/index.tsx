@@ -19,8 +19,8 @@ function Skills() {
 
   return (
     <section
-      className="Cutout_Section relative w-full h-screen
-        grid md:grid-cols-2 items-center
+      className="Cutout_Section relative w-full h-screen overflow-hidden
+        grid md:grid-cols-2 items-center 
       "
       style={
         {

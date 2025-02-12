@@ -33,7 +33,7 @@ function Descriptions({
 
   return (
     <ul
-      className=" py-[1vh] px-[1vw] h-full
+      className=" py-[1vh] px-[1vw]
         grid grid-cols-2 md:grid-cols-3 grid-flow-col place-content-center gap-x-[2vw] gap-y-[1.5vh] 
       "
       style={{
