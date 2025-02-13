@@ -113,7 +113,7 @@ export default function Skill() {
       },
       {
         name: "react-apexcharts",
-        src: "/hero/curtain/front/react-apexcharts.webp",
+        src: "/hero/curtain/front/apexcharts.webp",
         description:
           "React ApexCharts is my library for creating interactive and visually appealing charts. I use it to present complex data in an easy-to-understand format, enhancing data visualization in my projects.",
       },

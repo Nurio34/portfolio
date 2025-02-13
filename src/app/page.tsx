@@ -14,11 +14,11 @@ import { GlobalContextProvider } from "./GlobalContext";
 
 export default function Home() {
   const parts = [
+    { name: "contact", component: <Contact />, id: "Contact" },
     { name: "hero", component: <Hero />, id: "Hero" },
     { name: "about", component: <About />, id: "About" },
     { name: "skills", component: <Skills />, id: "Skills" },
     { name: "projects", component: <Projects />, id: "Projects" },
-    { name: "contact", component: <Contact />, id: "Contact" },
     { name: "footer", component: <Footer />, id: "Footer" },
   ];
 

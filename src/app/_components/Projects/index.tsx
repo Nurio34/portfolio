@@ -6,7 +6,6 @@ import "./index.css";
 
 export default function Projects() {
   const [isAnimationStarted, setIsAnimationStarted] = useState(false);
-  console.log(isAnimationStarted);
 
   return (
     <section
