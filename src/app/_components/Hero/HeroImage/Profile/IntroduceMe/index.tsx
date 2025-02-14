@@ -22,8 +22,7 @@ function IntroduceMe() {
     "I create or integrate REST APIs to enhance application functionality",
   ];
 
-  const { curtainsState } = useHeroContext();
-  const { isOpened } = curtainsState;
+  const { isLogoAnimated } = useHeroContext();
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [streamMessage, setStreamMessage] = useState("");
@@ -32,7 +31,7 @@ function IntroduceMe() {
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
-    if (!isOpened) return;
+    if (!isLogoAnimated) return;
 
     const message = introducings[currentIndex];
     let i = isDeleting ? message.length : 0;
@@ -74,7 +73,7 @@ function IntroduceMe() {
       if (intervalRef.current) clearInterval(intervalRef.current);
       if (timeoutRef.current) clearTimeout(timeoutRef.current);
     };
-  }, [isOpened, currentIndex, isDeleting]);
+  }, [isLogoAnimated, currentIndex, isDeleting]);
 
   return (
     <div

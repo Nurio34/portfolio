@@ -1,6 +1,7 @@
 "use client";
 
 import { createContext, ReactNode, useContext, useState } from "react";
+import { CurtainSizeType, useCurtainSize } from "./_hooks";
 
 interface CurtainsStateType {
   isOpening: boolean;
@@ -10,18 +11,32 @@ interface CurtainsStateType {
 interface HeroContextType {
   curtainsState: CurtainsStateType;
   setCurtainsState: React.Dispatch<React.SetStateAction<CurtainsStateType>>;
+  curtainSize: CurtainSizeType;
+  isLogoAnimated: boolean;
+  setIsLogoAnimated: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const HeroContext = createContext<HeroContextType | undefined>(undefined);
 
 export const HeroProvider = ({ children }: { children: ReactNode }) => {
   const [curtainsState, setCurtainsState] = useState<CurtainsStateType>({
-    isOpening: true,
-    isOpened: true,
+    isOpening: false,
+    isOpened: false,
   });
 
+  const { curtainSize } = useCurtainSize();
+  const [isLogoAnimated, setIsLogoAnimated] = useState(false);
+
   return (
-    <HeroContext.Provider value={{ curtainsState, setCurtainsState }}>
+    <HeroContext.Provider
+      value={{
+        curtainsState,
+        setCurtainsState,
+        curtainSize,
+        isLogoAnimated,
+        setIsLogoAnimated,
+      }}
+    >
       {children}
     </HeroContext.Provider>
   );

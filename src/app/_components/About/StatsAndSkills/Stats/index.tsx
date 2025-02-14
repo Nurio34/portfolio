@@ -36,12 +36,17 @@ function Stats({
 
   return (
     <div className="space-y-1 md:space-y-[2vh]">
-      <h2
+      <motion.h2
         className=" text-lg md:text-4xl font-extrabold text-primary font-serif"
         style={{ fontVariant: "small-caps" }}
+        initial={{ opacity: 0, x: "-25%" }}
+        whileInView={
+          animations.isAboutMeAnimated ? { opacity: 1, x: "0%" } : {}
+        }
+        transition={{ duration: 0.6, type: "tween" }}
       >
         Experience
-      </h2>
+      </motion.h2>
       <motion.ul
         className=" space-y-[2vh]"
         initial={{ opacity: 0, x: "-25%" }}

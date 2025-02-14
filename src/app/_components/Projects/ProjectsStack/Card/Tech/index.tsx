@@ -35,7 +35,7 @@ function Tech({
   return (
     <motion.li
       className={`Tech_Badge relative bg-base-100 transition-all
-        ${areTechsRevealed ? "grow max-w-[60%]" : ""}  
+        ${areTechsRevealed ? "grow max-w-[30%]" : ""}  
       `}
       initial={{ display: "none" }}
       animate={{ display: "block", transition: { delay: index * 1.5 } }}

@@ -6,7 +6,7 @@ import Hero from "./_components/Hero";
 import About from "./_components/About";
 import Skills from "./_components/Skills";
 import Projects from "./_components/Projects";
-import Footer from "./_components/Footer";
+// import Footer from "./_components/Footer";
 import Scrollbar from "./_components/Scrollbar";
 import useScrollDirection from "./hooks/useScrollDirection";
 import ThemeHandler from "./_components/ThemeHandler";
@@ -14,12 +14,12 @@ import { GlobalContextProvider } from "./GlobalContext";
 
 export default function Home() {
   const parts = [
-    { name: "contact", component: <Contact />, id: "Contact" },
     { name: "hero", component: <Hero />, id: "Hero" },
     { name: "about", component: <About />, id: "About" },
     { name: "skills", component: <Skills />, id: "Skills" },
     { name: "projects", component: <Projects />, id: "Projects" },
-    { name: "footer", component: <Footer />, id: "Footer" },
+    { name: "contact", component: <Contact />, id: "Contact" },
+    //  { name: "footer", component: <Footer />, id: "Footer" },
   ];
 
   const [currentComponent, setCurrentComponent] = useState(0);

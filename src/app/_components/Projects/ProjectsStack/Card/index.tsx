@@ -24,7 +24,7 @@ function Card({
 
   const [z_Pos, setZ_Pos] = useState<number[]>([]);
   const [y_Pos, setY_Pos] = useState<string[]>([]);
-  const [rotatingY, setRotatingY] = useState(5);
+  const [rotatingY, setRotatingY] = useState(1);
 
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -152,7 +152,7 @@ function Card({
               }
             }}
             onMouseLeave={() => {
-              setRotatingY(5);
+              setRotatingY(1);
               setIsCardStackVisible(true);
               setPerspective(35);
             }}

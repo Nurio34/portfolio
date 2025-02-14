@@ -1,16 +1,30 @@
 import { motion } from "framer-motion";
 import { ControlType } from "..";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-function InputControl({ control }: { control: ControlType }) {
+function InputControl({
+  control,
+  isSubmitted,
+  error,
+}: {
+  control: ControlType;
+  isSubmitted: boolean;
+  error: string | undefined;
+}) {
   const [isFocused, setIsFocused] = useState(false);
   const [value, setValue] = useState("");
+
+  useEffect(() => {
+    if (isSubmitted) {
+      setValue("");
+    }
+  }, [isSubmitted]);
 
   return (
     <div
       key={control.name}
-      className="relative rounded-lg border-2 border-base-100"
-      onFocus={(e) => {
+      className="relative rounded-lg "
+      onFocus={() => {
         setIsFocused(true);
       }}
       onBlur={() => {
@@ -21,20 +35,19 @@ function InputControl({ control }: { control: ControlType }) {
     >
       <input
         type={control.type}
-        className="py-[1vh] pl-[2vw] rounded-lg w-full bg-base-content text-base-100 border-base-100 outline-none"
-        value={value}
+        className="border-2 border-base-100 py-[1vh] pl-[1vw] rounded-lg w-full bg-base-content text-base-100  outline-none"
+        name={control.name}
         onChange={(e) => setValue(e.target.value)}
         autoCorrect="off"
         autoComplete="off"
       />
       <motion.span
-        className="absolute left-0 min-w-max text-base-100  px-1 rounded-md pointer-events-none"
+        className="absolute  left-0 min-w-max text-base-100  px-1 rounded-md pointer-events-none"
         animate={{
           fontSize: isFocused ? "12px" : "16px",
           fontWeight: isFocused ? 900 : 500,
           opacity: isFocused ? 1 : 0.5,
-          top: isFocused ? "0%" : "50%",
-          y: "-50%",
+          y: isFocused ? "-50%" : "50%",
           x: isFocused ? 15 : 10,
           backgroundColor: isFocused
             ? "var(--fallback-bc,oklch(var(--bc)/var(--tw-bg-opacity, 1)))"
@@ -44,6 +57,10 @@ function InputControl({ control }: { control: ControlType }) {
       >
         {control.placeholder}
       </motion.span>
+      <span className="absolute right-0 -translate-x-1/2 top-1/2 -translate-y-1/2">
+        {control.icon}
+      </span>
+      <p className=" text-error text-xs font-extrabold">{error}</p>
     </div>
   );
 }

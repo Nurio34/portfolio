@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useHeroContext } from "../../HeroContext";
 import Image from "next/image";
+import TechIcon from "../TechIcon";
 
 function LeftCurtain() {
   const images = [
@@ -16,11 +17,13 @@ function LeftCurtain() {
     "/hero/curtain/front/framer.webp",
   ];
 
-  const { setCurtainsState } = useHeroContext();
+  const { setCurtainsState, curtainSize } = useHeroContext();
 
   return (
     <motion.div
-      className=" relative overflow-hidden"
+      className="relative overflow-hidden
+        grid 
+      "
       exit={{
         x: "-100%",
         borderBottomRightRadius: "100%", // Corrected
@@ -30,7 +33,7 @@ function LeftCurtain() {
         setCurtainsState((prev) => ({ ...prev, isOpened: true }))
       }
     >
-      <figure className="relative w-full h-full overflow-hidden">
+      <figure className="col-start-1 col-end-2 row-start-1 row-end-2 relative  w-full h-full overflow-hidden">
         <Image
           src={"/hero/curtain/curtain.webp"}
           fill
@@ -38,30 +41,9 @@ function LeftCurtain() {
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
         />
       </figure>
-      <ul
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10
-            flex flex-wrap justify-center gap-x-[2vw] md:gap-x-[2vw] gap-y-[2vh] md:gap-y-[4vh]
-        "
-      >
+      <ul className="col-start-1 col-end-2 row-start-1 row-end-2">
         {images.map((image) => (
-          <li
-            key={image}
-            className={`relative w-5 md:w-12 aspect-square
-                ${
-                  image.includes("typescript")
-                    ? "rounded-md overflow-hidden"
-                    : ""
-                }    
-            `}
-          >
-            <Image
-              src={image}
-              fill
-              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-              alt="icon"
-              className=" object-contain"
-            />
-          </li>
+          <TechIcon key={image} image={image} curtainSize={curtainSize} />
         ))}
       </ul>
     </motion.div>

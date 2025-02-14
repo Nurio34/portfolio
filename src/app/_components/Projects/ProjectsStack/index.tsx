@@ -31,7 +31,7 @@ function ProjectsStack({
     {
       title: "Smart Shop",
       description:
-        "An AI-powered e-commerce PWA with real-time updates, role-based access, and personalized recommendations for a seamless shopping experience.",
+        "AI-powered e-commerce PWA with real-time updates, role-based access, and personalized recommendations.",
       image: "/projects/smart_shop.webp",
       techs: [
         {
@@ -85,7 +85,7 @@ function ProjectsStack({
     {
       title: "Whatsup",
       description:
-        "Whatsup is a real-time messaging app with end-to-end encryption for secure communication. It supports text, images and notifications for a smooth messaging experience.",
+        "Real-time messaging app with end-to-end encryption, supporting text, images, and notifications.",
       image: "/projects/whatsup.webp",
       techs: [
         {
@@ -140,7 +140,7 @@ function ProjectsStack({
     {
       title: "LMS Learn",
       description:
-        "An online learning platform for instructors to create courses and students to enroll, featuring progress tracking and user authentication.",
+        "Online learning platform for instructors to create courses and students to enroll, with progress tracking.",
       image: "/projects/lms_learn.webp",
       techs: [
         {

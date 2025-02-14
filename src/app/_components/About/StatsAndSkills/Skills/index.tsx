@@ -143,12 +143,17 @@ function Techs({ animations }: { animations: AnimationsType }) {
 
   return (
     <div className="space-y-1 md:space-y-[2vh]">
-      <h2
+      <motion.h2
         className="text-lg md:text-4xl font-extrabold text-primary font-serif"
         style={{ fontVariant: "small-caps" }}
+        initial={{ opacity: 0, x: "25%" }}
+        whileInView={
+          animations.isAboutMeAnimated ? { opacity: 1, x: "0%" } : {}
+        }
+        transition={{ duration: 0.6, type: "tween" }}
       >
         Techs
-      </h2>
+      </motion.h2>
       <motion.ul
         className="grid grid-rows-3 md:grid-rows-none gap-y-4 md:gap-y-[4vh] w-full"
         initial={{ opacity: 0, x: "25%" }}

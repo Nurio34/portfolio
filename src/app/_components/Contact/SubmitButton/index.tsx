@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 function SubmitButton({ isLoading }: { isLoading: boolean }) {
   return (
     <button
-      className={`relative overflow-hidden btn w-full btn-secondary ${
+      className={`relative overflow-hidden btn w-full btn-secondary -z-0 ${
         isLoading ? "opacity-50 cursor-not-allowed" : ""
       }`}
     >
