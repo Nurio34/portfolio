@@ -11,7 +11,7 @@ import Scrollbar from "./_components/Scrollbar";
 import useScrollDirection from "./hooks/useScrollDirection";
 import ThemeHandler from "./_components/ThemeHandler";
 import { GlobalContextProvider } from "./GlobalContext";
-import Chatbot from "./_components/Chatbot";
+import Track from "./_components/Track";
 
 export default function Home() {
   const parts = [
@@ -20,7 +20,6 @@ export default function Home() {
     { name: "skills", component: <Skills />, id: "Skills" },
     { name: "projects", component: <Projects />, id: "Projects" },
     { name: "contact", component: <Contact />, id: "Contact" },
-    { name: "chatbot", component: <Chatbot />, id: "Chatbot" },
     //  { name: "footer", component: <Footer />, id: "Footer" },
   ];
 
@@ -50,6 +49,7 @@ export default function Home() {
   return (
     <GlobalContextProvider>
       <main>
+        <Track />
         <ThemeHandler />
         <Scrollbar />
         <ul>

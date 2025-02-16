@@ -19,6 +19,7 @@ function Skills() {
 
   return (
     <section
+      id="About"
       className="Cutout_Section relative w-full h-screen overflow-hidden
         grid md:grid-cols-2 items-center 
       "

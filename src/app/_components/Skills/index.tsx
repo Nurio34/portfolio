@@ -393,6 +393,7 @@ export default function Skill() {
 
   return (
     <section
+      id="Skills"
       className="Cutout_Section relative w-full h-screen py-[2vh] px-[8vw] space-y-[1vh] overflow-hidden
         grid grid-rows-[auto,auto,1fr]
       "

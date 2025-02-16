@@ -239,6 +239,7 @@ export default function ContactMe() {
 
   return (
     <section
+      id="Contact"
       className="Cutout_Section relative w-full h-screen grid place-content-center justify-items-center px-[2vw] overflow-hidden"
       style={
         {

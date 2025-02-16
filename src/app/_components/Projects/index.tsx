@@ -9,7 +9,7 @@ export default function Projects() {
 
   return (
     <section
-      id="projects"
+      id="Projects"
       className="Cutout_Section relative w-full h-screen overflow-hidden
         grid grid-rows-[auto,1fr]
       "
