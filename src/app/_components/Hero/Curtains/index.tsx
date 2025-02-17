@@ -38,7 +38,7 @@ function Curtains() {
     <>
       {!curtainsState.isOpened && (
         <div
-          className=" absolute w-full h-screen z-20
+          className=" absolute w-full h-screen z-50
         grid grid-cols-2
     "
         >

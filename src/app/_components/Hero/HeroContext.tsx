@@ -20,8 +20,8 @@ const HeroContext = createContext<HeroContextType | undefined>(undefined);
 
 export const HeroProvider = ({ children }: { children: ReactNode }) => {
   const [curtainsState, setCurtainsState] = useState<CurtainsStateType>({
-    isOpening: true,
-    isOpened: true,
+    isOpening: false,
+    isOpened: false,
   });
 
   const { curtainSize } = useCurtainSize();
