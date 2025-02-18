@@ -1,7 +1,12 @@
 import Link from "next/link";
+import NavButton from "./NavButton";
+
+export type NavButtonType = {
+  id: string;
+};
 
 function Track() {
-  const links = [
+  const links: NavButtonType[] = [
     {
       id: "Hero",
     },
@@ -26,17 +31,13 @@ function Track() {
     "
     >
       <ul className="flex items-center gap-x-[2vw]">
-        {links.map((link) => (
-          <li key={link.id}>
-            <Link
-              href={`#${link.id}`}
-              className="w-14 border rounded-full aspect-square text-xs font-extrabold
-                    flex justify-center items-center p-4
-                "
-            >
-              {link.id}
-            </Link>
-          </li>
+        {links.map((link, index) => (
+          <NavButton
+            key={link.id}
+            link={link}
+            index={index}
+            total={links.length}
+          ></NavButton>
         ))}
       </ul>
     </nav>
