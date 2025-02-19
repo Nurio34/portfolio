@@ -1,4 +1,3 @@
-import Link from "next/link";
 import NavButton from "./NavButton";
 
 export type NavButtonType = {
