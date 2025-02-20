@@ -25,7 +25,7 @@ function Track() {
 
   return (
     <nav
-      className="fixed z-40 top-0 left-1/2 -translate-x-1/2 py-[2vh] w-1/2
+      className="fixed z-40 bottom-0 md:bottom-[90%]  left-1/2 -translate-x-1/2 py-[2vh] w-1/2
         flex justify-center
     "
     >

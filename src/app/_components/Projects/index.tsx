@@ -1,11 +1,19 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ProjectsStack from "./ProjectsStack";
 import "./index.css";
+import { useGlobalContext } from "@/app/GlobalContext";
 
 export default function Projects() {
+  const { currentComponent } = useGlobalContext();
   const [isAnimationStarted, setIsAnimationStarted] = useState(false);
+
+  useEffect(() => {
+    if (currentComponent === 3) {
+      setIsAnimationStarted(true);
+    }
+  }, [currentComponent]);
 
   return (
     <section

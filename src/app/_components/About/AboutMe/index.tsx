@@ -46,15 +46,42 @@ function AboutMe({
         I love solving real-world problems through technology. My goal is to
         create intuitive user experiences and efficient back-end solutions.
       </p>
-      <Link
-        href={"/file/cv.pdf"}
-        target="_blank"
-        download={"cv"}
-        className="btn btn-sm md:btn-md btn-primary font-semibold"
+      <motion.div
+        animate={{
+          filter: [
+            "drop-shadow(0 0 15px var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity, 1))))",
+            "drop-shadow(0 0 10px var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity, 1))))",
+            "drop-shadow(0 0 5px var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity, 1))))",
+            "drop-shadow(0 0 0px var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity, 1))))",
+            "drop-shadow(0 0 5px var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity, 1))))",
+            "drop-shadow(0 0 10px var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity, 1))))",
+            "drop-shadow(0 0 15px var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity, 1))))",
+          ],
+          scale: [1.01, 1, 1.01],
+        }}
+        transition={{
+          filter: {
+            duration: 4,
+            repeat: Infinity,
+            ease: "easeInOut",
+          },
+          scale: {
+            duration: 1,
+            repeat: Infinity,
+            ease: "easeInOut",
+          },
+        }}
       >
-        <FaDownload />
-        Take a Look at To My Resume
-      </Link>
+        <Link
+          href={"/file/cv.pdf"}
+          target="_blank"
+          download={"cv"}
+          className="btn btn-sm md:btn-md btn-primary font-semibold w-full"
+        >
+          <FaDownload />
+          Take a Look at To My Resume
+        </Link>
+      </motion.div>
     </motion.div>
   );
 }

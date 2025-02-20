@@ -183,6 +183,7 @@ export default function ContactMe() {
           setTimeout(() => {
             FormRef.current?.reset();
             setIsSubmitted(true);
+            setErrors({});
             toast.custom((t: ToastObject) => (
               <div
                 className={`${
@@ -265,7 +266,7 @@ export default function ContactMe() {
         Let&apos;s Build Something Great Together
       </motion.h2>
       <motion.p
-        className="md:text-lg text-center mb-6 max-w-xl"
+        className="Contrast md:text-lg text-center mb-6 max-w-xl"
         initial={{ opacity: 0, y: 10 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3 }}
@@ -278,7 +279,7 @@ export default function ContactMe() {
         ref={FormRef}
         autoComplete="off"
         autoCorrect="off"
-        className=" md:w-96 bg-base-content py-[2vh] px-[0.5vw] rounded-xl shadow-lg space-y-[1vh]"
+        className=" md:w-[80%] bg-base-content py-[2vh] px-[0.5vw] rounded-xl shadow-lg space-y-[1vh]"
         initial={{ opacity: 0, scale: 0.9 }}
         whileInView={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5 }}
@@ -288,7 +289,7 @@ export default function ContactMe() {
           sendMail();
         }}
       >
-        <h2 className="relative text-3xl font-bold text-center text-base-300 overflow-hidden">
+        <h2 className="relative max-w-96 justify-self-center text-3xl font-bold text-center text-base-300 overflow-hidden">
           Hire Me Before Someone Else Does! 🚀💼
           <motion.div
             className="absolute top-0 w-full h-full bg-base-content"

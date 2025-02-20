@@ -80,8 +80,12 @@ function Stats({
             <span className="md:text-2xl text-primary font-bold">
               {stat.amount}
             </span>
-            <p className="text-sm md:text-lg font-semibold">{stat.info}</p>
-            <p className="text-xs md:text-md line-clamp-2">{stat.detail}</p>
+            <p className="Contrast text-sm md:text-lg font-semibold">
+              {stat.info}
+            </p>
+            <p className="Contrast text-xs md:text-md line-clamp-2">
+              {stat.detail}
+            </p>
           </motion.li>
         ))}
       </motion.ul>

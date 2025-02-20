@@ -78,7 +78,7 @@ function FakePasswordInput({ control }: { control: ControlType }) {
     if (countDown.isChanging) {
       countdownTimeout.current = setTimeout(() => {
         setCountDown((pre) => ({ isChanging: false, value: pre.value - 1 }));
-      }, 600);
+      }, 500);
     }
 
     return () => {

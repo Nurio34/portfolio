@@ -114,7 +114,7 @@ function Card({
           <motion.li
             key={i}
             tabIndex={i === 0 ? 0 : -1}
-            className={`absolute z-10 top-0 left-0 w-full h-full shadow-base-content rounded-lg overflow-hidden bg-base-100
+            className={`absolute z-10 -top-[150%] md:top-0 -left-[80%] md:left-0  w-[300%] md:w-full h-[400%] md:h-full shadow-base-content rounded-lg overflow-hidden bg-base-100
               grid grid-rows-[1fr,1fr]
               ${i !== 0 ? "border-b-8" : ""}
               ${i === 0 ? "shadow-md" : ""}
@@ -131,7 +131,7 @@ function Card({
                 "--rotatingY": rotatingY,
               } as React.CSSProperties
             }
-            initial={{ rotateY: perspective, opacity: 0, top: 0 }}
+            initial={{ rotateY: perspective, opacity: 0 }}
             animate={{
               opacity:
                 currentIndex !== index

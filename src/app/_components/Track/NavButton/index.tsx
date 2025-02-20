@@ -13,19 +13,38 @@ function NavButton({
   index: number;
   total: number;
 }) {
-  const { indexState, setIndexState } = useGlobalContext();
+  const { indexState, setIndexState, setCurrentComponent } = useGlobalContext();
   const { start, end } = indexState;
   const isButtonIncluded = end >= index;
   const isLineIncluded = end > index;
-  const delay_parameter = 1;
+  const delay_parameter = 0.1;
 
   //! *** line's states ***
-  const [width, setWidth] = useState(0);
+  const [lineWidth, setLineWidth] = useState(0);
+  const [buttonWidth, setButtonWidth] = useState(0);
 
   useEffect(() => {
+    const handleWidth = () => {
+      setLineWidth(window.innerWidth * 0.02);
+
+      if (window.innerWidth > 768) {
+        setButtonWidth(64);
+      } else {
+        setButtonWidth(48);
+      }
+    };
+
     if (typeof window !== "undefined") {
-      setWidth(window.innerWidth * 0.02);
+      handleWidth();
+
+      window.addEventListener("resize", handleWidth);
     }
+
+    return () => {
+      if (typeof window !== "undefined") {
+        window.removeEventListener("resize", handleWidth);
+      }
+    };
   }, []);
   //! *********************
 
@@ -33,7 +52,7 @@ function NavButton({
     <li className="relative">
       <div
         className="relative aspect-square overflow-hidden rounded-full"
-        style={{ width: 64 }}
+        style={{ width: buttonWidth }}
       >
         <div className="absolute top-0 left-0 rounded-full w-full h-full bg-base-content" />
         <motion.div
@@ -51,25 +70,25 @@ function NavButton({
         />
 
         <Link
-          //href={`#${link.id}`}
-          href={"#"}
-          className={`absolute aspect-square top-1 left-1 rounded-full text-xs font-extrabold bg-base-100
+          href={`#${link.id}`}
+          className={`absolute aspect-square top-1 left-1 rounded-full text-[10px] md:text-xs font-normal md:font-extrabold bg-base-100
             flex justify-center items-center
         `}
-          style={{ width: 56 }}
-          onClick={() =>
-            setIndexState((prev) => ({ ...prev, start: prev.end, end: index }))
-          }
+          style={{ width: buttonWidth - 8 }}
+          onClick={() => {
+            setIndexState((prev) => ({ ...prev, start: prev.end, end: index }));
+            setCurrentComponent(index);
+          }}
         >
           {link.id}
         </Link>
       </div>
       {index < total - 1 && (
         <div
-          className=" absolute top-1/2 -translate-y-1/2 h-1 bg-white z-50 overflow-hidden"
+          className=" absolute top-1/2 -translate-y-1/2 h-1 bg-base-content z-50 overflow-hidden"
           style={{
-            width,
-            right: -width,
+            width: lineWidth,
+            right: -lineWidth,
           }}
         >
           <motion.div
@@ -83,8 +102,7 @@ function NavButton({
                 duration: delay_parameter,
                 delay: isLineIncluded
                   ? delay_parameter * (-start + index) * 2
-                  : //TODO : burda kaldım
-                    2 * (delay_parameter * (start - index)),
+                  : delay_parameter + delay_parameter * (start - index - 1) * 2,
               },
             }}
           />

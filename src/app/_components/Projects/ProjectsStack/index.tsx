@@ -192,7 +192,7 @@ function ProjectsStack({
     <motion.ul className=" flex justify-center items-center">
       <button
         type="button"
-        className="Contrast absolute left-[20%]"
+        className="Contrast absolute left-0 md:left-[20%] z-20"
         onClick={() => {
           setCurrentIndex((prev) => {
             if (prev === 0) return projects.length - 1;
@@ -200,7 +200,7 @@ function ProjectsStack({
           });
         }}
       >
-        <CiCircleChevLeft size={80} />
+        <CiCircleChevLeft className="text-5xl md:text-8xl" />
       </button>
       <div className="Projects_Perspective z-10 w-1/4 -translate-x-1/4 aspect-square">
         {projects.map((project, index) => (
@@ -216,12 +216,12 @@ function ProjectsStack({
       </div>
       <button
         type="button"
-        className="Contrast absolute right-[20%]"
+        className="Contrast absolute right-0 md:right-[20%] z-20"
         onClick={() => {
           setCurrentIndex((prev) => (prev + 1) % projects.length);
         }}
       >
-        <CiCircleChevRight size={80} />
+        <CiCircleChevRight className="text-5xl md:text-8xl" />
       </button>
     </motion.ul>
   );
