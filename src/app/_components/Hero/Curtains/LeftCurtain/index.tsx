@@ -34,12 +34,13 @@ function LeftCurtain() {
             absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
           "
           >
-            <figure className="w-full h-full">
+            <figure className=" relative w-full h-full">
               <Image
                 src={"/hero/curtain/front/react-big.webp"}
                 fill
                 alt="react logo"
                 className="object-contain"
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
               />
             </figure>
             <figure
@@ -52,6 +53,7 @@ function LeftCurtain() {
                 fill
                 alt="next logo"
                 className="object-contain"
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
               />
             </figure>
           </div>

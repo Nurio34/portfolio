@@ -33,24 +33,26 @@ function RightCurtain() {
               absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
             "
           >
-            <figure className="w-full h-full">
+            <figure className="relative w-full h-full">
               <Image
                 src={"/hero/curtain/back/node-big.webp"}
                 fill
                 alt="react logo"
                 className="object-contain"
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
               />
             </figure>
             <figure
               className="w-1/6 aspect-square 
-                  absolute bottom-0 right-0
-                "
+                absolute bottom-0 right-0 bg-white rounded-full overflow-hidden
+              "
             >
               <Image
                 src={"/hero/curtain/back/express.webp"}
                 fill
                 alt="next logo"
                 className="object-contain border-2 border-base-100 p-2 rounded-full"
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
               />
             </figure>
           </div>
