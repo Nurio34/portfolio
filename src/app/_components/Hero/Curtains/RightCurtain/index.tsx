@@ -23,6 +23,7 @@ function RightCurtain() {
             fill
             alt="curtain"
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            priority
           />
         </figure>
 
@@ -40,6 +41,7 @@ function RightCurtain() {
                 alt="react logo"
                 className="object-contain"
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                priority
               />
             </figure>
             <figure
