@@ -3,6 +3,7 @@ import { NavButtonType } from "..";
 import { useGlobalContext } from "@/app/GlobalContext";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import { track } from "@vercel/analytics/react";
 
 function NavButton({
   link,
@@ -78,6 +79,7 @@ function NavButton({
           onClick={() => {
             setIndexState((prev) => ({ ...prev, start: prev.end, end: index }));
             setCurrentComponent(index);
+            track("Button Clicked", { buttonId: `Button-${link.id}` });
           }}
         >
           {link.id}

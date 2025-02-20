@@ -3,6 +3,7 @@ import { FaDownload } from "react-icons/fa";
 import { AnimationsType } from "..";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { track } from "@vercel/analytics";
 
 function AboutMe({
   setAnimations,
@@ -77,6 +78,9 @@ function AboutMe({
           target="_blank"
           download={"cv"}
           className="btn btn-sm md:btn-md btn-primary font-semibold w-full"
+          onClick={() => {
+            track("Button Clicked", { buttonId: "Button-Resume" });
+          }}
         >
           <FaDownload />
           Take a Look at To My Resume

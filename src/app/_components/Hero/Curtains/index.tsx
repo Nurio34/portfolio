@@ -3,6 +3,7 @@ import { useHeroContext } from "../HeroContext";
 import { useEffect, useRef } from "react";
 import LeftCurtain from "./LeftCurtain";
 import RightCurtain from "./RightCurtain";
+import { track } from "@vercel/analytics";
 
 function Curtains() {
   const { curtainsState, setCurtainsState } = useHeroContext();
@@ -11,6 +12,8 @@ function Curtains() {
   //! *** after 2 seconds, close curtains ***
   useEffect(() => {
     timeoutRef.current = setTimeout(() => {
+      track("Curtains closing");
+
       setCurtainsState((prev) => ({ ...prev, isOpening: true }));
 
       if (timeoutRef.current) {

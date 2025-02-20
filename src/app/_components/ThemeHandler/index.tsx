@@ -1,6 +1,7 @@
 "use client";
 
 import { ThemeType, useGlobalContext } from "@/app/GlobalContext";
+import { track } from "@vercel/analytics";
 import { useEffect } from "react";
 
 function ThemeHandler() {
@@ -31,7 +32,15 @@ function ThemeHandler() {
         type="checkbox"
         className="theme-controller"
         checked={theme === "dark"}
-        onChange={toggleTheme}
+        onChange={(e) => {
+          toggleTheme();
+          console.log(e.currentTarget.checked);
+          if (e.currentTarget.checked) {
+            track("Theme changed to Dark", { buttonId: "Button-Theme" });
+          } else {
+            track("Theme changed to Light", { buttonId: "Button-Theme" });
+          }
+        }}
       />
 
       {/* Sun icon (Light mode) */}

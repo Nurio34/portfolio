@@ -277,7 +277,7 @@ export default function Skill() {
       },
       {
         name: "express-rate-limit",
-        src: "/hero/curtain/back/rate-limiter.webp",
+        src: "/hero/curtain/back/rate-limit.webp",
         description:
           "Express Rate Limit is my middleware for limiting repeated requests to APIs. I use it to prevent abuse, such as brute-force attacks or excessive API calls, ensuring fair usage and protecting server resources.",
       },

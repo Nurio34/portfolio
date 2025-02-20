@@ -1,3 +1,4 @@
+import { track } from "@vercel/analytics";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -35,7 +36,13 @@ function SocialLinks() {
               link.name === "x" ? "rounded-md overflow-hidden" : ""
             }`}
           >
-            <Link href={link.href} target="_blank">
+            <Link
+              href={link.href}
+              target="_blank"
+              onClick={() => {
+                track("Button Clicked", { buttonId: `Button-${link.name}` });
+              }}
+            >
               <figure className=" relative w-8 aspect-square">
                 <Image
                   src={link.src}

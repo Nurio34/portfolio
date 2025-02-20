@@ -11,6 +11,7 @@ import FakePasswordInput from "./FakePasswordInput";
 import InputControl from "./InputControl";
 import TextAreaControl from "./TextAreaControl";
 import { z } from "zod";
+import { track } from "@vercel/analytics";
 
 type ToastObject = {
   id: string;
@@ -137,6 +138,9 @@ export default function ContactMe() {
     try {
       setIsLoading(true);
       setIsSubmitted(false);
+      track("Button Clicked", {
+        buttonId: `Button-ContactForm_Submit`,
+      });
 
       if (FormRef.current) {
         const formData = new FormData(FormRef.current);
@@ -279,7 +283,7 @@ export default function ContactMe() {
         ref={FormRef}
         autoComplete="off"
         autoCorrect="off"
-        className=" md:w-[80%] bg-base-content py-[2vh] px-[0.5vw] rounded-xl shadow-lg space-y-[1vh]"
+        className=" md:w-[80%] bg-base-content py-[2vh] px-[2vw] md:px-[1vw] rounded-xl shadow-lg space-y-[1vh]"
         initial={{ opacity: 0, scale: 0.9 }}
         whileInView={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5 }}
@@ -340,7 +344,6 @@ export default function ContactMe() {
         <SubmitButton isLoading={isLoading} />
       </motion.form>
 
-      {/* Direct Contact Links */}
       <ul className="flex gap-x-[4vw] md:gap-x-[2vw] items-center py-[2vh]">
         {links.map((link, index) => (
           <motion.li
@@ -350,6 +353,11 @@ export default function ContactMe() {
               x: "0%",
               opacity: 1,
               transition: { duration: 0.6, delay: 1 + 0.3 * index },
+            }}
+            onClick={() => {
+              track("Button Clicked", {
+                buttonId: `Button-Contact_Link-${link.name}`,
+              });
             }}
           >
             <Link href={link.href} target="_blank">

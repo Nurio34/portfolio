@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { ControlType } from "..";
 import { AnimatePresence, motion } from "framer-motion";
+import { track } from "@vercel/analytics";
 
 function FakePasswordInput({ control }: { control: ControlType }) {
   const messages = ["Just kidding :)", "This input will self-destruct in"];
@@ -98,6 +99,9 @@ function FakePasswordInput({ control }: { control: ControlType }) {
       `}
       onClick={() => {
         setIsFocused(true);
+        track("Button Clicked", {
+          buttonId: `Button-Password_Input`,
+        });
       }}
       animate={{
         width: isDestructStarted ? 100 : undefined,

@@ -1,5 +1,6 @@
 import { Dispatch, SetStateAction } from "react";
 import { CurrentTabType } from "../..";
+import { track } from "@vercel/analytics";
 
 function Button({
   title,
@@ -12,6 +13,7 @@ function Button({
 }) {
   const handleTab = () => {
     setCurrentTab(title);
+    track("Button Clicked", { buttonId: `Button-Tab_${title}` });
   };
 
   return (

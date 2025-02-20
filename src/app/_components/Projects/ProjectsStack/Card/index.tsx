@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Tech from "./Tech";
 import SourceButtons from "./SourceButtons";
+import { track } from "@vercel/analytics";
 
 function Card({
   project,
@@ -115,7 +116,7 @@ function Card({
             key={i}
             tabIndex={i === 0 ? 0 : -1}
             className={`absolute z-10 -top-[150%] md:top-0 -left-[80%] md:left-0  w-[300%] md:w-full h-[400%] md:h-full shadow-base-content rounded-lg overflow-hidden bg-base-100
-              grid grid-rows-[1fr,1fr]
+              grid grid-rows-[1fr,1fr] 
               ${i !== 0 ? "border-b-8" : ""}
               ${i === 0 ? "shadow-md" : ""}
               ${
@@ -156,8 +157,13 @@ function Card({
               setIsCardStackVisible(true);
               setPerspective(35);
             }}
+            onClick={() => {
+              track("Button Clicked", {
+                buttonId: `Not_Button-Card_${project.title}`,
+              });
+            }}
           >
-            <figure className="relative ">
+            <figure className="relative cursor-default">
               <Image
                 src={project.image}
                 fill
@@ -167,7 +173,7 @@ function Card({
               />
             </figure>
             {i === 0 && (
-              <div className={` py-[0.5vh] px-[1vw]`}>
+              <div className={` py-[0.5vh] px-[1vw] cursor-default`}>
                 <h2 className=" font-bold">{titleStream}</h2>
                 <p className=" text-sm font-semibold">{descriptionStream}</p>
                 {isDescriptionStreamComplated && (

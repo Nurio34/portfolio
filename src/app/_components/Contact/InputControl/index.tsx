@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { ControlType } from "..";
 import { useEffect, useState } from "react";
+import { track } from "@vercel/analytics";
 
 function InputControl({
   control,
@@ -40,6 +41,11 @@ function InputControl({
         onChange={(e) => setValue(e.target.value)}
         autoCorrect="off"
         autoComplete="off"
+        onClick={() => {
+          track("Button Clicked", {
+            buttonId: `Button-FormControl_${control.name}`,
+          });
+        }}
       />
       <motion.span
         className="absolute  left-0 min-w-max text-base-100  px-1 rounded-md pointer-events-none"

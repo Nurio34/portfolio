@@ -3,6 +3,7 @@ import { useState } from "react";
 import { ProjectType } from "../..";
 import Link from "next/link";
 import Image from "next/image";
+import { track } from "@vercel/analytics";
 
 function SourceButtons({
   areTechsRevealed,
@@ -29,6 +30,12 @@ function SourceButtons({
           className=" w-full btn btn-sm btn-primary
             flex items-center
           "
+          onClick={(e) => {
+            e.stopPropagation();
+            track("Button Clicked", {
+              buttonId: `Button-Project_${project.title}_Github`,
+            });
+          }}
         >
           <figure className="relative w-5 aspect-square rounded-md overflow-hidden">
             <Image
@@ -67,6 +74,12 @@ function SourceButtons({
           className="w-full relative overflow-hidden btn btn-sm btn-secondary
             flex items-center
           "
+          onClick={(e) => {
+            e.stopPropagation();
+            track("Button Clicked", {
+              buttonId: `Button-Project_${project.title}_LiveApp`,
+            });
+          }}
         >
           <figure className="relative w-5 aspect-square rounded-md overflow-hidden">
             <Image

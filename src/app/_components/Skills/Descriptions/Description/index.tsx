@@ -3,6 +3,7 @@ import { DescriptionType } from "..";
 import { FaAngleDown } from "react-icons/fa";
 import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
+import { track } from "@vercel/analytics";
 
 function Description({
   description,
@@ -42,6 +43,8 @@ function Description({
   }, [openDescription]);
 
   const handleDescriptionVisiblity = () => {
+    track("Button Clicked", { buttonId: `Button-${description.name}` });
+
     if (description.name === openDescription) {
       return setOpenDescription("");
     }
