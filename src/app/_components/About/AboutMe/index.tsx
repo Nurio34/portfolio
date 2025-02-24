@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction } from "react";
 import { FaDownload } from "react-icons/fa";
 import { AnimationsType } from "..";
-import { delay, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import Link from "next/link";
 import { track } from "@vercel/analytics";
 
