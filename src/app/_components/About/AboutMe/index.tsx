@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction } from "react";
 import { FaDownload } from "react-icons/fa";
 import { AnimationsType } from "..";
-import { motion } from "framer-motion";
+import { delay, motion } from "framer-motion";
 import Link from "next/link";
 import { track } from "@vercel/analytics";
 
@@ -47,45 +47,90 @@ function AboutMe({
         I love solving real-world problems through technology. My goal is to
         create intuitive user experiences and efficient back-end solutions.
       </p>
-      <motion.div
-        animate={{
-          filter: [
-            "drop-shadow(0 0 15px var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity, 1))))",
-            "drop-shadow(0 0 10px var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity, 1))))",
-            "drop-shadow(0 0 5px var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity, 1))))",
-            "drop-shadow(0 0 0px var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity, 1))))",
-            "drop-shadow(0 0 5px var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity, 1))))",
-            "drop-shadow(0 0 10px var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity, 1))))",
-            "drop-shadow(0 0 15px var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity, 1))))",
-          ],
-          scale: [1.01, 1, 1.01],
-        }}
-        transition={{
-          filter: {
-            duration: 4,
-            repeat: Infinity,
-            ease: "easeInOut",
-          },
-          scale: {
-            duration: 1,
-            repeat: Infinity,
-            ease: "easeInOut",
-          },
-        }}
-      >
-        <Link
-          href={"/file/cv.pdf"}
-          target="_blank"
-          download={"cv"}
-          className="btn btn-sm md:btn-md btn-primary font-semibold w-full"
-          onClick={() => {
-            track("Button Clicked", { buttonId: "Button-Resume" });
+      <div className=" flex gap-x-[1vw]">
+        <motion.div
+          className=" min-w-max"
+          animate={{
+            filter: [
+              "drop-shadow(0 0 15px var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity, 1))))",
+              "drop-shadow(0 0 10px var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity, 1))))",
+              "drop-shadow(0 0 5px var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity, 1))))",
+              "drop-shadow(0 0 0px var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity, 1))))",
+              "drop-shadow(0 0 5px var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity, 1))))",
+              "drop-shadow(0 0 10px var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity, 1))))",
+              "drop-shadow(0 0 15px var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity, 1))))",
+            ],
+            scale: [1.01, 1, 1.01],
+          }}
+          transition={{
+            filter: {
+              duration: 4,
+              repeat: Infinity,
+              ease: "easeInOut",
+            },
+            scale: {
+              duration: 1,
+              repeat: Infinity,
+              ease: "easeInOut",
+            },
           }}
         >
-          <FaDownload />
-          Take a Look at To My Resume
-        </Link>
-      </motion.div>
+          <Link
+            href={"/file/CV_English.pdf"}
+            target="_blank"
+            download={"CV_English"}
+            className="btn btn-sm md:btn-md btn-primary font-semibold w-full"
+            onClick={() => {
+              track("Button Clicked", { buttonId: "Button-Resume" });
+            }}
+          >
+            <FaDownload />
+            Take a Look at To My Resume
+          </Link>
+        </motion.div>
+        <motion.div
+          className=" min-w-max"
+          animate={{
+            filter: [
+              "drop-shadow(0 0 15px var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity, 1))))",
+              "drop-shadow(0 0 10px var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity, 1))))",
+              "drop-shadow(0 0 5px var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity, 1))))",
+              "drop-shadow(0 0 0px var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity, 1))))",
+              "drop-shadow(0 0 5px var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity, 1))))",
+              "drop-shadow(0 0 10px var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity, 1))))",
+              "drop-shadow(0 0 15px var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity, 1))))",
+            ],
+            scale: [1.01, 1, 1.01],
+          }}
+          transition={{
+            filter: {
+              duration: 4,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 2,
+            },
+            scale: {
+              duration: 1,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 0.5,
+            },
+          }}
+        >
+          <Link
+            href={"/file/CV_Türkce.pdf"}
+            target="_blank"
+            download={"CV_Türkçe"}
+            className="btn btn-sm md:btn-md btn-secondary font-semibold w-full"
+            onClick={() => {
+              track("Button Clicked", { buttonId: "Button-Resume" });
+            }}
+          >
+            <FaDownload />
+            Özgeçmişime Göz Atın
+          </Link>
+        </motion.div>
+      </div>
     </motion.div>
   );
 }
