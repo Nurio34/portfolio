@@ -115,7 +115,7 @@ function Card({
           <motion.li
             key={i}
             tabIndex={i === 0 ? 0 : -1}
-            className={`absolute z-10  -left-[80%] md:left-0 w-[417.25px] h-[417.25px] shadow-base-content rounded-lg overflow-hidden bg-base-100
+            className={`absolute z-10 -left-[80%] md:left-0 w-[417.25px] h-[417.25px] shadow-base-content rounded-lg overflow-hidden bg-base-100
               grid grid-rows-[1fr,1fr] 
               ${i !== 0 ? "border-b-8" : ""}
               ${i === 0 ? "shadow-md" : ""}
