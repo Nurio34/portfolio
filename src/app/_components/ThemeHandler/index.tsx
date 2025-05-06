@@ -34,7 +34,6 @@ function ThemeHandler() {
         checked={theme === "dark"}
         onChange={(e) => {
           toggleTheme();
-          console.log(e.currentTarget.checked);
           if (e.currentTarget.checked) {
             track("Theme changed to Dark", { buttonId: "Button-Theme" });
           } else {

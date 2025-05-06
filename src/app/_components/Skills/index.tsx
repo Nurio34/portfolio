@@ -390,6 +390,7 @@ export default function Skill() {
   };
 
   const [currentTab, setCurrentTab] = useState<CurrentTabType>("front");
+  const [openDescription, setOpenDescription] = useState("");
 
   return (
     <section
@@ -422,8 +423,14 @@ export default function Skill() {
         skills={skills}
         currentTab={currentTab}
         setCurrentTab={setCurrentTab}
+        setOpenDescription={setOpenDescription}
       />
-      <Descriptions skills={skills} currentTab={currentTab} />
+      <Descriptions
+        skills={skills}
+        currentTab={currentTab}
+        openDescription={openDescription}
+        setOpenDescription={setOpenDescription}
+      />
     </section>
   );
 }

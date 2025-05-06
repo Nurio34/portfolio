@@ -6,10 +6,12 @@ function TabButtons({
   skills,
   currentTab,
   setCurrentTab,
+  setOpenDescription,
 }: {
   skills: SkillsType;
   currentTab: CurrentTabType;
   setCurrentTab: Dispatch<SetStateAction<CurrentTabType>>;
+  setOpenDescription: Dispatch<SetStateAction<string>>;
 }) {
   return (
     <nav>
@@ -20,6 +22,7 @@ function TabButtons({
             title={title as CurrentTabType}
             currentTab={currentTab}
             setCurrentTab={setCurrentTab}
+            setOpenDescription={setOpenDescription}
           />
         ))}
       </ul>

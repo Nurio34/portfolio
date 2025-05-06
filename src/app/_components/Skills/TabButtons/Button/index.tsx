@@ -6,13 +6,16 @@ function Button({
   title,
   currentTab,
   setCurrentTab,
+  setOpenDescription,
 }: {
   title: CurrentTabType;
   currentTab: CurrentTabType;
   setCurrentTab: Dispatch<SetStateAction<CurrentTabType>>;
+  setOpenDescription: Dispatch<SetStateAction<string>>;
 }) {
   const handleTab = () => {
     setCurrentTab(title);
+    setOpenDescription("");
     track("Button Clicked", { buttonId: `Button-Tab_${title}` });
   };
 

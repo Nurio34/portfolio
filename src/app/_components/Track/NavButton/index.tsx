@@ -14,7 +14,8 @@ function NavButton({
   index: number;
   total: number;
 }) {
-  const { indexState, setIndexState, setCurrentComponent } = useGlobalContext();
+  const { indexState, setIndexState, setCurrentComponent, currentComponent } =
+    useGlobalContext();
   const { start, end } = indexState;
   const isButtonIncluded = end >= index;
   const isLineIncluded = end > index;
@@ -49,6 +50,14 @@ function NavButton({
   }, []);
   //! *********************
 
+  useEffect(() => {
+    setIndexState((prev) => ({
+      ...prev,
+      start: prev.end,
+      end: currentComponent,
+    }));
+  }, [currentComponent]);
+
   return (
     <li className="relative">
       <div
@@ -77,8 +86,6 @@ function NavButton({
         `}
           style={{ width: buttonWidth - 8 }}
           onClick={() => {
-            setIndexState((prev) => ({ ...prev, start: prev.end, end: index }));
-            setCurrentComponent(index);
             track("Button Clicked", { buttonId: `Button-${link.id}` });
           }}
         >

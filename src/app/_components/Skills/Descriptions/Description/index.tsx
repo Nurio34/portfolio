@@ -54,7 +54,7 @@ function Description({
 
   return (
     <motion.li
-      className={` self-start md:py-1 px-[1vw] rounded-md  ${
+      className={`relative self-start md:py-1 px-[1vw] rounded-md  ${
         description.name === openDescription
           ? "shadow-md shadow-base-content bg-base-100"
           : "bg-base-content text-base-100"
@@ -66,56 +66,68 @@ function Description({
         transition: { type: "tween", delay: 0.1 * index },
       }}
     >
-      <button
-        type="button"
-        className="w-full text-start"
-        onClick={handleDescriptionVisiblity}
-      >
-        <div className="flex gap-x-[0.5vw] items-center">
-          <figure className=" relative w-4 md:w-8 aspect-square rounded-md overflow-hidden">
-            <Image
-              src={description.src}
-              fill
-              alt={description.name}
-              className=" object-contain"
-              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-            />
-          </figure>
-          <p
-            className={`capitalize text-sm line-clamp-1 md:line-clamp-none ${
-              description.name === openDescription ? "font-bold" : ""
-            }`}
-          >
-            {description.name}
-          </p>
-          <motion.div
-            animate={{
-              rotateZ: openDescription === description.name ? "180deg" : "0deg",
-              transition: {
-                type: "tween",
-              },
-            }}
-          >
-            <FaAngleDown />
-          </motion.div>
-        </div>
+      <div>
+        <button
+          type="button"
+          className="w-full text-start"
+          onClick={handleDescriptionVisiblity}
+        >
+          <div className="flex gap-x-[0.5vw] items-center">
+            <figure className=" relative w-4 md:w-8 aspect-square rounded-md overflow-hidden">
+              <Image
+                src={description.src}
+                fill
+                alt={description.name}
+                className=" object-contain"
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              />
+            </figure>
+            <p
+              className={`capitalize text-sm line-clamp-1 md:line-clamp-none ${
+                description.name === openDescription ? "font-bold" : ""
+              }`}
+            >
+              {description.name}
+            </p>
+            <motion.div
+              animate={{
+                rotateZ:
+                  openDescription === description.name ? "180deg" : "0deg",
+                transition: {
+                  type: "tween",
+                },
+              }}
+            >
+              <FaAngleDown />
+            </motion.div>
+          </div>
+        </button>
         <motion.p
-          className={`overflow-hidden ${
-            description.name === openDescription ? "font-semibold" : ""
-          }`}
+          className={`overflow-hidden absolute shadow-xl ${
+            index % 2 === 0
+              ? "left-0 rounded-tr-lg lg:rounded-tr-none"
+              : "right-0 rounded-tl-lg lg:rounded-tl-none"
+          } px-[1vw] pt-1 lg:pt-0 pb-1 rounded-bl-lg rounded-br-lg bg-base-100 
+            w-[200%] lg:w-full
+            ${
+              description.name === openDescription
+                ? "font-semibold z-10"
+                : "-z-10"
+            }`}
           initial={{ height: 0 }}
           animate={{
             opacity: openDescription === description.name ? 1 : 0,
-            height:
-              openDescription === description.name
-                ? `${isMobile ? "24px" : "auto"}`
-                : 0,
+            // height:
+            //   openDescription === description.name
+            //     ? `${isMobile ? "24px" : "auto"}`
+            //     : 0,
+            height: "auto",
             transition: { type: "tween" },
           }}
         >
           {descriptionStream}
         </motion.p>
-      </button>
+      </div>
     </motion.li>
   );
 }

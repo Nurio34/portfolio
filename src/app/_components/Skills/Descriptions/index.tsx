@@ -1,5 +1,5 @@
 import { CurrentTabType, SkillsType } from "..";
-import { useEffect, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import Description from "./Description";
 
 export type DescriptionType = {
@@ -11,12 +11,15 @@ export type DescriptionType = {
 function Descriptions({
   skills,
   currentTab,
+  openDescription,
+  setOpenDescription,
 }: {
   skills: SkillsType;
   currentTab: CurrentTabType;
+  openDescription: string;
+  setOpenDescription: Dispatch<SetStateAction<string>>;
 }) {
   const descriptions: DescriptionType[] = skills[currentTab];
-  const [openDescription, setOpenDescription] = useState("");
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -34,7 +37,7 @@ function Descriptions({
   return (
     <ul
       className=" py-[1vh] px-[1vw]
-        grid grid-cols-2 md:grid-cols-3 grid-flow-col place-content-center gap-x-[2vw] gap-y-[1.5vh] 
+        grid grid-cols-2 lg:grid-cols-3 place-content-center gap-x-[2vw] gap-y-[1.5vh] 
       "
       style={{
         gridTemplateRows: `repeat(${Math.ceil(

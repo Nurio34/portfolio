@@ -47,9 +47,9 @@ function AboutMe({
         I love solving real-world problems through technology. My goal is to
         create intuitive user experiences and efficient back-end solutions.
       </p>
-      <div className=" flex gap-x-[1vw]">
+      <div className=" flex flex-col lg:flex-row gap-y-[1vh] gap-x-[1vw]">
         <motion.div
-          className=" min-w-max"
+          className=" min-w-max "
           animate={{
             filter: [
               "drop-shadow(0 0 15px var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity, 1))))",

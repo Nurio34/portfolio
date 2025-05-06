@@ -45,8 +45,8 @@ interface GlobalContextType {
   setTheme: Dispatch<SetStateAction<ThemeType>>;
   indexState: IndexType;
   setIndexState: Dispatch<SetStateAction<IndexType>>;
-  // currentComponent: number;
-  // setCurrentComponent: Dispatch<SetStateAction<number>>;
+  currentComponent: number;
+  setCurrentComponent: Dispatch<SetStateAction<number>>;
   visibleEl: string;
 }
 
@@ -68,12 +68,9 @@ export const GlobalContextProvider = ({
   });
   //! ***
 
-  //! *** observer ***
-  const { visibleEl } = useMultipleElementsScrollObserver(parts);
-  //! ****************
-
   //! *** when scroll, detect next section and automaticly scroll that this section takes full screen ***
-  // const [currentComponent, setCurrentComponent] = useState(0);
+  const [currentComponent, setCurrentComponent] = useState(0);
+
   // const { scrollFirstPosition, scrollLastPosition } = useScrollDirection();
 
   // useEffect(() => {
@@ -103,6 +100,13 @@ export const GlobalContextProvider = ({
 
   //! **********************
 
+  //! *** observer ***
+  const { visibleEl } = useMultipleElementsScrollObserver(
+    parts,
+    setCurrentComponent
+  );
+  //! ****************
+
   return (
     <GlobalContext.Provider
       value={{
@@ -111,6 +115,8 @@ export const GlobalContextProvider = ({
         indexState,
         setIndexState,
         visibleEl,
+        currentComponent,
+        setCurrentComponent,
       }}
     >
       {children}

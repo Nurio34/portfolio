@@ -1,15 +1,21 @@
-import { useEffect, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { PartType } from "../GlobalContext";
 
-function useMultipleElementsScrollObserver(parts: PartType[]) {
+function useMultipleElementsScrollObserver(
+  parts: PartType[],
+  setCurrentComponent: Dispatch<SetStateAction<number>>
+) {
   const [visibleEl, setVisibleEl] = useState("Hero");
+
+  useEffect(() => {
+    setCurrentComponent(parts.find((part) => part.id === visibleEl)!.index);
+  }, [visibleEl]);
 
   useEffect(() => {
     // Get all the elements by their ids
     const elements = parts
       .map((part) => document.getElementById(part.id))
       .filter((el) => el !== null);
-    console.log({ elements });
 
     // If no valid elements are found, exit early
     if (elements.length === 0) return;
@@ -28,7 +34,7 @@ function useMultipleElementsScrollObserver(parts: PartType[]) {
       {
         root: null, // observing relative to the viewport
         rootMargin: "0px",
-        // threshold: 0.5, // Trigger when 50% of the element is visible
+        threshold: 0.5, // Trigger when 50% of the element is visible
       }
     );
 
