@@ -16,6 +16,7 @@ import About from "./_components/About";
 import Skills from "./_components/Skills";
 import Projects from "./_components/Projects";
 import ContactMe from "./_components/Contact";
+import useMultipleElementsScrollObserver from "./hooks/useMultipleElementsScrollObserver";
 
 export type PartType = {
   name: string;
@@ -30,7 +31,6 @@ export const parts: PartType[] = [
   { name: "skills", component: <Skills />, id: "Skills", index: 2 },
   { name: "projects", component: <Projects />, id: "Projects", index: 3 },
   { name: "contact", component: <ContactMe />, id: "Contact", index: 4 },
-  //  { name: "footer", component: <Footer />, id: "Footer",index:5 },
 ];
 
 export type ThemeType = "dark" | "light";
@@ -45,8 +45,9 @@ interface GlobalContextType {
   setTheme: Dispatch<SetStateAction<ThemeType>>;
   indexState: IndexType;
   setIndexState: Dispatch<SetStateAction<IndexType>>;
-  currentComponent: number;
-  setCurrentComponent: Dispatch<SetStateAction<number>>;
+  // currentComponent: number;
+  // setCurrentComponent: Dispatch<SetStateAction<number>>;
+  visibleEl: string;
 }
 
 const GlobalContext = createContext<GlobalContextType | undefined>(undefined);
@@ -67,34 +68,38 @@ export const GlobalContextProvider = ({
   });
   //! ***
 
+  //! *** observer ***
+  const { visibleEl } = useMultipleElementsScrollObserver(parts);
+  //! ****************
+
   //! *** when scroll, detect next section and automaticly scroll that this section takes full screen ***
-  const [currentComponent, setCurrentComponent] = useState(0);
-  const { scrollFirstPosition, scrollLastPosition } = useScrollDirection();
+  // const [currentComponent, setCurrentComponent] = useState(0);
+  // const { scrollFirstPosition, scrollLastPosition } = useScrollDirection();
 
-  useEffect(() => {
-    if (scrollLastPosition - scrollFirstPosition === 100) {
-      if (currentComponent < parts.length - 1) {
-        setCurrentComponent((pre) => pre + 1);
-      }
-    }
-    if (scrollLastPosition - scrollFirstPosition === 0 - 100) {
-      if (currentComponent > 0) {
-        setCurrentComponent((pre) => pre - 1);
-      }
-    }
-  }, [scrollLastPosition]);
+  // useEffect(() => {
+  //   if (scrollLastPosition - scrollFirstPosition === 100) {
+  //     if (currentComponent < parts.length - 1) {
+  //       setCurrentComponent((pre) => pre + 1);
+  //     }
+  //   }
+  //   if (scrollLastPosition - scrollFirstPosition === 0 - 100) {
+  //     if (currentComponent > 0) {
+  //       setCurrentComponent((pre) => pre - 1);
+  //     }
+  //   }
+  // }, [scrollLastPosition]);
 
-  useEffect(() => {
-    const component = document.querySelector(`#${parts[currentComponent].id}`);
-    if (component) {
-      component.scrollIntoView({ behavior: "smooth" });
-      setIndexState((prev) => ({
-        ...prev,
-        start: prev.end,
-        end: currentComponent,
-      }));
-    }
-  }, [currentComponent]);
+  // useEffect(() => {
+  //   const component = document.querySelector(`#${parts[currentComponent].id}`);
+  //   if (component) {
+  //     component.scrollIntoView({ behavior: "smooth" });
+  //     setIndexState((prev) => ({
+  //       ...prev,
+  //       start: prev.end,
+  //       end: currentComponent,
+  //     }));
+  //   }
+  // }, [currentComponent]);
 
   //! **********************
 
@@ -105,8 +110,7 @@ export const GlobalContextProvider = ({
         setTheme,
         indexState,
         setIndexState,
-        currentComponent,
-        setCurrentComponent,
+        visibleEl,
       }}
     >
       {children}
