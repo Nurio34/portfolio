@@ -14,8 +14,7 @@ function NavButton({
   index: number;
   total: number;
 }) {
-  const { indexState, setIndexState, setCurrentComponent, currentComponent } =
-    useGlobalContext();
+  const { indexState, setIndexState, currentComponent } = useGlobalContext();
   const { start, end } = indexState;
   const isButtonIncluded = end >= index;
   const isLineIncluded = end > index;

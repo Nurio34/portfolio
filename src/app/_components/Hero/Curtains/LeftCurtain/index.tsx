@@ -11,7 +11,7 @@ function LeftCurtain() {
       exit={{
         x: "-100%",
         borderBottomRightRadius: "100%",
-        transition: { type: "tween", duration: 4 },
+        transition: { type: "tween", duration: 2 },
       }}
       onAnimationComplete={() =>
         setCurtainsState((prev) => ({ ...prev, isOpened: true }))

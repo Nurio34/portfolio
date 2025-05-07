@@ -19,7 +19,7 @@ function Curtains() {
       if (timeoutRef.current) {
         clearTimeout(timeoutRef.current);
       }
-    }, 2000);
+    }, 1000);
 
     return () => {
       if (timeoutRef.current) {

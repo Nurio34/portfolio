@@ -283,7 +283,7 @@ export default function ContactMe() {
         ref={FormRef}
         autoComplete="off"
         autoCorrect="off"
-        className=" md:w-[80%] bg-base-content py-[2vh] px-[2vw] md:px-[1vw] rounded-xl shadow-lg space-y-[1vh]"
+        className=" md:w-[80%] bg-base-content py-[2vh] px-[2vw] md:px-[1vw] rounded-xl shadow-lg space-y-2 md:space-y-3"
         initial={{ opacity: 0, scale: 0.9 }}
         whileInView={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5 }}
@@ -293,7 +293,7 @@ export default function ContactMe() {
           sendMail();
         }}
       >
-        <h2 className="relative max-w-96 justify-self-center text-3xl font-bold text-center text-base-300 overflow-hidden">
+        <h2 className="relative max-w-96 justify-self-center text-2xl md:text-3xl font-bold text-center text-base-300 overflow-hidden">
           Hire Me Before Someone Else Does! 🚀💼
           <motion.div
             className="absolute top-0 w-full h-full bg-base-content"

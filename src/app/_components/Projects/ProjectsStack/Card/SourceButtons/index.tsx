@@ -1,9 +1,9 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { ProjectType } from "../..";
 import Link from "next/link";
 import Image from "next/image";
 import { track } from "@vercel/analytics";
+import { ProjectType } from "../../..";
 
 function SourceButtons({
   areTechsRevealed,

@@ -10,13 +10,11 @@ function Description({
   openDescription,
   setOpenDescription,
   index,
-  isMobile,
 }: {
   description: DescriptionType;
   openDescription: string;
   setOpenDescription: Dispatch<SetStateAction<string>>;
   index: number;
-  isMobile: boolean;
 }) {
   const [descriptionStream, setDescriptionStream] = useState("");
   const intervalRef = useRef<NodeJS.Timeout | null>(null);

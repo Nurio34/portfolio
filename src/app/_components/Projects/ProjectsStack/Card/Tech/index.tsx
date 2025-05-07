@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
 import { Dispatch, RefObject, SetStateAction } from "react";
-import { TechType } from "../..";
 import Image from "next/image";
 import { useGlobalContext } from "@/app/GlobalContext";
+import { TechType } from "../../..";
 
 function Tech({
   tech,
@@ -23,13 +23,14 @@ function Tech({
   const borderColor = theme === "dark" ? "rgb(255,255,255)" : "rgb(29,35,42)";
   const backgroundColor =
     theme === "light" ? "rgb(255,255,255)" : "rgb(29,35,42)";
+
   function revealButtons() {
     timeoutRef.current = setTimeout(() => {
       setAreTechsRevealed(true);
       if (timeoutRef.current) {
         clearTimeout(timeoutRef.current);
       }
-    }, 1500);
+    }, 1000);
   }
 
   return (
@@ -38,7 +39,7 @@ function Tech({
         ${areTechsRevealed ? "grow max-w-[30%]" : ""}  
       `}
       initial={{ display: "none" }}
-      animate={{ display: "block", transition: { delay: index * 1.5 } }}
+      animate={{ display: "block", transition: { delay: index * 0.8 } }}
       onAnimationComplete={() => {
         if (index === totalTechs - 1) {
           revealButtons();

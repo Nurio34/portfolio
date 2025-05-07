@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { ControlType } from "..";
 import { useEffect, useState } from "react";
 import { track } from "@vercel/analytics";
+import { useGlobalContext } from "@/app/GlobalContext";
 
 function TextAreaControl({
   control,
@@ -14,6 +15,7 @@ function TextAreaControl({
 }) {
   const [isFocused, setIsFocused] = useState(false);
   const [value, setValue] = useState("");
+  const { isMobile } = useGlobalContext();
 
   useEffect(() => {
     if (isSubmitted) {
@@ -53,7 +55,14 @@ function TextAreaControl({
       <motion.span
         className="absolute left-0 min-w-max text-base-100  px-1 rounded-md pointer-events-none"
         animate={{
-          fontSize: isFocused ? "12px" : "16px",
+          fontSize:
+            isFocused && isMobile
+              ? "9px"
+              : isFocused && !isMobile
+              ? "12px"
+              : !isFocused && isMobile
+              ? "12px"
+              : "16px",
           fontWeight: isFocused ? 900 : 500,
           opacity: isFocused ? 1 : 0.5,
           y: isFocused ? "-50%" : "50%",

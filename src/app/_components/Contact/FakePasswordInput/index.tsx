@@ -2,9 +2,12 @@ import { useEffect, useRef, useState } from "react";
 import { ControlType } from "..";
 import { AnimatePresence, motion } from "framer-motion";
 import { track } from "@vercel/analytics";
+import { useGlobalContext } from "@/app/GlobalContext";
 
 function FakePasswordInput({ control }: { control: ControlType }) {
   const messages = ["Just kidding :)", "This input will self-destruct in"];
+
+  const { isMobile } = useGlobalContext();
 
   const [isFocused, setIsFocused] = useState(false);
   const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
@@ -12,7 +15,7 @@ function FakePasswordInput({ control }: { control: ControlType }) {
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
   const InputRef = useRef<HTMLInputElement | null>(null);
   const [areMessagesComplated, setAreMessagesComplated] = useState(false);
-  const [countDown, setCountDown] = useState({ value: 5, isChanging: false });
+  const [countDown, setCountDown] = useState({ value: 3, isChanging: false });
   const countdownTimeout = useRef<NodeJS.Timeout | null>(null);
   const [isDestructStarted, setIsDestructStarted] = useState(false);
   const [isGotLarge, setIsGotLarge] = useState(false);
@@ -92,7 +95,7 @@ function FakePasswordInput({ control }: { control: ControlType }) {
   return (
     <motion.div
       key={control.name}
-      className={`rounded-lg  z-50
+      className={`rounded-lg  z-50 
           flex items-center ${areMessagesComplated ? "" : "gap-x-[0.5vw]"}
           ${isDestructStarted ? "bg-red-500" : "border-2 border-base-100"}
           ${isGone ? "absolute" : "relative"}    
@@ -148,7 +151,14 @@ function FakePasswordInput({ control }: { control: ControlType }) {
           <motion.span
             className="absolute left-0 min-w-max text-base-100 px-1 rounded-md pointer-events-none"
             animate={{
-              fontSize: isFocused ? "12px" : "16px",
+              fontSize:
+                isFocused && isMobile
+                  ? "9px"
+                  : isFocused && !isMobile
+                  ? "12px"
+                  : !isFocused && isMobile
+                  ? "12px"
+                  : "16px",
               fontWeight: isFocused ? 900 : 500,
               opacity: isFocused ? 1 : 0.5,
               top: isFocused ? "0%" : "50%",

@@ -1,10 +1,10 @@
 import { motion } from "framer-motion";
-import { ProjectType } from "..";
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Tech from "./Tech";
 import SourceButtons from "./SourceButtons";
 import { track } from "@vercel/analytics";
+import { ProjectType } from "../..";
 
 function Card({
   project,
@@ -95,7 +95,7 @@ function Card({
   function streamDescription() {
     let ind = 0;
     intervalRef.current = setInterval(() => {
-      if (ind === project.description.length) {
+      if (ind >= project.description.length) {
         if (intervalRef.current) {
           clearInterval(intervalRef.current);
           setIsDescriptionStreamComplated(true);
@@ -103,7 +103,7 @@ function Card({
       }
 
       setDescriptionStream(project.description.slice(0, ind));
-      ind++;
+      ind = ind + 3;
     }, 10);
   }
 

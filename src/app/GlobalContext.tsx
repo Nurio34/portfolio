@@ -10,7 +10,6 @@ import {
   useEffect,
   useState,
 } from "react";
-import useScrollDirection from "./hooks/useScrollDirection";
 import Hero from "./_components/Hero";
 import About from "./_components/About";
 import Skills from "./_components/Skills";
@@ -48,6 +47,8 @@ interface GlobalContextType {
   currentComponent: number;
   setCurrentComponent: Dispatch<SetStateAction<number>>;
   visibleEl: string;
+  isMobile: boolean;
+  setIsMobile: Dispatch<SetStateAction<boolean>>;
 }
 
 const GlobalContext = createContext<GlobalContextType | undefined>(undefined);
@@ -107,6 +108,20 @@ export const GlobalContextProvider = ({
   );
   //! ****************
 
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleIsMobile = () => {
+      setIsMobile(window.innerWidth > 768 ? false : true);
+    };
+    handleIsMobile();
+    window.addEventListener("resize", handleIsMobile);
+
+    return () => {
+      window.removeEventListener("resize", handleIsMobile);
+    };
+  }, []);
+
   return (
     <GlobalContext.Provider
       value={{
@@ -117,6 +132,8 @@ export const GlobalContextProvider = ({
         visibleEl,
         currentComponent,
         setCurrentComponent,
+        isMobile,
+        setIsMobile,
       }}
     >
       {children}

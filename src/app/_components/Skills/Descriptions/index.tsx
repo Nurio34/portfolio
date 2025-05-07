@@ -1,6 +1,7 @@
 import { CurrentTabType, SkillsType } from "..";
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { Dispatch, SetStateAction } from "react";
 import Description from "./Description";
+import { useGlobalContext } from "@/app/GlobalContext";
 
 export type DescriptionType = {
   name: string;
@@ -20,19 +21,7 @@ function Descriptions({
   setOpenDescription: Dispatch<SetStateAction<string>>;
 }) {
   const descriptions: DescriptionType[] = skills[currentTab];
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const handleIsMobile = () => {
-      setIsMobile(window.innerWidth > 768 ? false : true);
-    };
-    handleIsMobile();
-    window.addEventListener("resize", handleIsMobile);
-
-    return () => {
-      window.removeEventListener("resize", handleIsMobile);
-    };
-  }, []);
+  const { isMobile } = useGlobalContext();
 
   return (
     <ul
@@ -52,7 +41,6 @@ function Descriptions({
           openDescription={openDescription}
           setOpenDescription={setOpenDescription}
           index={index}
-          isMobile={isMobile}
         />
       ))}
     </ul>
