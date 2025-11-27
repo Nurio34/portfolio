@@ -5,7 +5,7 @@ function MernImages() {
     {
       src: "/hero/mern/mongo.webp",
       title: "M",
-      subtitle: "ern",
+      subtitle: "ongoDB",
     },
     {
       src: "/hero/mern/express.webp",
